@@ -1,168 +1,299 @@
 /* ==========================================================================
-   Primeira Igreja Batista de Jaguapitã - JavaScript App Core
+   PIB Jaguapitã - Application Logic & Dynamic Site Hydration Engine
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initMobileMenu();
-  initVisitModal();
-  initPixCopy();
-  initBlogFilter();
+  // Initialize dynamic site content hydration
+  initSiteHydration();
+
+  // Mobile Navigation Drawer Toggle
+  initMobileDrawer();
+
+  // Modal Handlers
+  initModals();
+
+  // PIX Clipboard Handler
+  initPixClipboard();
+
+  // Contact Form Submission Handler
   initContactForm();
+
+  // Blog Search and Filter Handler
+  initBlogFilters();
 });
 
 /* ==========================================================================
-   1. Mobile Navigation Menu
+   1. Dynamic Site Hydration Engine
    ========================================================================== */
-function initMobileMenu() {
+function initSiteHydration() {
+  if (!window.PIBStore) return;
+  const settings = window.PIBStore.getSettings();
+
+  // 1. Social Links
+  document.querySelectorAll('a.social-icon[aria-label="Instagram"]').forEach(el => {
+    if (settings.instagramUrl) el.href = settings.instagramUrl;
+  });
+  document.querySelectorAll('a.social-icon[aria-label="Facebook"]').forEach(el => {
+    if (settings.facebookUrl) el.href = settings.facebookUrl;
+  });
+  document.querySelectorAll('a.social-icon[aria-label="YouTube"]').forEach(el => {
+    if (settings.youtubeUrl) el.href = settings.youtubeUrl;
+  });
+
+  // 2. Telefone & WhatsApp
+  document.querySelectorAll('[data-bind="phone"]').forEach(el => {
+    el.textContent = settings.phone;
+  });
+  document.querySelectorAll('[data-bind="whatsapp"]').forEach(el => {
+    el.textContent = settings.whatsapp;
+    if (el.tagName === 'A') {
+      const cleanNum = settings.whatsapp.replace(/\D/g, '');
+      el.href = `https://wa.me/55${cleanNum}`;
+    }
+  });
+
+  // 3. E-mail
+  document.querySelectorAll('[data-bind="email"]').forEach(el => {
+    el.textContent = settings.email;
+    if (el.tagName === 'A') el.href = `mailto:${settings.email}`;
+  });
+
+  // 4. Endereço
+  document.querySelectorAll('[data-bind="address"]').forEach(el => {
+    el.innerHTML = settings.address.replace(/,\s*/g, '<br>');
+  });
+
+  // 5. Dados de Dízimo / PIX
+  document.querySelectorAll('[data-bind="pixKey"]').forEach(el => {
+    el.textContent = settings.pixKey;
+  });
+  document.querySelectorAll('[data-bind="bankName"]').forEach(el => {
+    el.textContent = settings.bankName;
+  });
+  document.querySelectorAll('[data-bind="bankAgency"]').forEach(el => {
+    el.textContent = settings.bankAgency;
+  });
+  document.querySelectorAll('[data-bind="bankAccount"]').forEach(el => {
+    el.textContent = settings.bankAccount;
+  });
+  document.querySelectorAll('[data-bind="bankFavored"]').forEach(el => {
+    el.textContent = settings.bankFavored;
+  });
+
+  // 6. Mapa do Google
+  document.querySelectorAll('iframe[title="Mapa PIB Jaguapitã"]').forEach(iframe => {
+    if (settings.mapsEmbedUrl) iframe.src = settings.mapsEmbedUrl;
+  });
+  document.querySelectorAll('a[href*="maps.google.com"]').forEach(link => {
+    if (settings.mapsUrl) link.href = settings.mapsUrl;
+  });
+
+  // 7. Dynamic Blog Posts Grid Rendering
+  renderDynamicBlogPosts();
+}
+
+function renderDynamicBlogPosts() {
+  const blogGrid = document.getElementById('blog-posts-grid');
+  if (!blogGrid || !window.PIBStore) return;
+
+  const posts = window.PIBStore.getBlogPosts();
+  if (!posts || posts.length === 0) {
+    blogGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--color-text-muted);">Nenhum artigo publicado no momento.</div>`;
+    return;
+  }
+
+  blogGrid.innerHTML = posts.map(post => `
+    <article class="feature-card blog-post-card" data-category="${post.category}" style="padding: 0; overflow: hidden; background: #fff;">
+      <img src="${post.image}" alt="${post.title}" style="width: 100%; height: 210px; object-fit: cover;">
+      <div style="padding: 28px;">
+        <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">${post.date} • ${(post.categoryLabel || post.category).toUpperCase()}</div>
+        <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">${post.title}</h2>
+        <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">${post.summary}</p>
+        <button class="btn-read-article" data-article="${post.id}" style="background: none; border: none; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; cursor: pointer; padding: 0;">Ler artigo completo →</button>
+      </div>
+    </article>
+  `).join('');
+
+  // Re-bind article modal triggers
+  bindArticleModals();
+}
+
+/* ==========================================================================
+   2. Mobile Drawer Navigation
+   ========================================================================== */
+function initMobileDrawer() {
   const toggleBtn = document.querySelector('.mobile-toggle');
   const closeBtn = document.querySelector('.drawer-close');
   const drawer = document.querySelector('.mobile-drawer');
   const overlay = document.querySelector('.drawer-overlay');
 
-  if (!toggleBtn || !drawer) return;
+  if (!toggleBtn || !drawer || !overlay) return;
 
   function openDrawer() {
     drawer.classList.add('open');
-    if (overlay) overlay.classList.add('open');
+    overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
     drawer.classList.remove('open');
-    if (overlay) overlay.classList.remove('open');
+    overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
 
   toggleBtn.addEventListener('click', openDrawer);
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  if (overlay) overlay.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
 }
 
 /* ==========================================================================
-   2. "Planeje sua Visita" Modal
+   3. Modal System (Visit & Blog Reader)
    ========================================================================== */
-function initVisitModal() {
-  const visitButtons = document.querySelectorAll('.btn-visit, [data-modal="visit"]');
-  const modal = document.getElementById('visit-modal');
-  
-  if (!modal) return;
+function initModals() {
+  const visitModal = document.getElementById('visit-modal');
+  const visitTriggers = document.querySelectorAll('[data-modal="visit"]');
 
-  const closeBtn = modal.querySelector('.modal-close-btn');
-
-  visitButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  const form = modal.querySelector('form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      closeModal();
-      showToast('Agradecemos pelo seu interesse! Em breve nossa equipe entrará em contato com você.');
-      form.reset();
-    });
-  }
-}
-
-/* ==========================================================================
-   3. Copy PIX Key with Toast Notification
-   ========================================================================== */
-function initPixCopy() {
-  const copyBtn = document.getElementById('btn-copy-pix');
-  if (!copyBtn) return;
-
-  copyBtn.addEventListener('click', () => {
-    const pixKey = 'financeiro@pibjaguapita.org.br';
-    
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(pixKey).then(() => {
-        showToast('Chave PIX copiada para a área de transferência!');
-      }).catch(() => {
-        fallbackCopyTextToClipboard(pixKey);
+  if (visitModal && visitTriggers.length > 0) {
+    visitTriggers.forEach(btn => {
+      btn.addEventListener('click', () => {
+        visitModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       });
-    } else {
-      fallbackCopyTextToClipboard(pixKey);
+    });
+
+    const closeBtn = visitModal.querySelector('.modal-close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        visitModal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
     }
+
+    visitModal.addEventListener('click', (e) => {
+      if (e.target === visitModal) {
+        visitModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    const form = visitModal.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        visitModal.classList.remove('active');
+        document.body.style.overflow = '';
+        showToast('✓ Sua visita foi agendada! Estamos ansiosos para receber você.');
+        form.reset();
+      });
+    }
+  }
+
+  bindArticleModals();
+}
+
+function bindArticleModals() {
+  const articleModal = document.getElementById('article-modal');
+  const readBtns = document.querySelectorAll('.btn-read-article');
+
+  if (!articleModal || readBtns.length === 0) return;
+
+  const modalTitle = document.getElementById('article-modal-title');
+  const modalCategory = document.getElementById('article-modal-category');
+  const modalImg = document.getElementById('article-modal-img');
+  const modalText = document.getElementById('article-modal-text');
+  const closeBtn = articleModal.querySelector('.modal-close-btn');
+
+  readBtns.forEach(btn => {
+    btn.onclick = () => {
+      const articleId = btn.getAttribute('data-article');
+      const post = window.PIBStore ? window.PIBStore.getBlogPostById(articleId) : null;
+
+      if (post) {
+        if (modalTitle) modalTitle.textContent = post.title;
+        if (modalCategory) modalCategory.textContent = `${post.date} • ${(post.categoryLabel || post.category).toUpperCase()}`;
+        if (modalImg) modalImg.src = post.image;
+        if (modalText) {
+          modalText.innerHTML = `
+            <p style="font-weight: 600; color: var(--color-primary);">${post.summary}</p>
+            <p style="margin-top: 12px; line-height: 1.8;">${post.content}</p>
+          `;
+        }
+        articleModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    };
+  });
+
+  if (closeBtn) {
+    closeBtn.onclick = () => {
+      articleModal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+  }
+
+  articleModal.onclick = (e) => {
+    if (e.target === articleModal) {
+      articleModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+}
+
+/* ==========================================================================
+   4. PIX Clipboard Handler
+   ========================================================================== */
+function initPixClipboard() {
+  const btnCopy = document.getElementById('btn-copy-pix');
+  if (!btnCopy) return;
+
+  btnCopy.addEventListener('click', () => {
+    const pixKeyEl = document.querySelector('[data-bind="pixKey"]');
+    const key = pixKeyEl ? pixKeyEl.textContent.trim() : (window.PIBStore ? window.PIBStore.getSettings().pixKey : 'financeiro@pibjaguapita.org.br');
+    
+    navigator.clipboard.writeText(key).then(() => {
+      showToast('✓ Chave PIX copiada para a área de transferência!');
+    }).catch(() => {
+      showToast('✓ Chave PIX: ' + key);
+    });
   });
 }
 
-function fallbackCopyTextToClipboard(text) {
-  const textArea = document.createElement('textarea');
-  textArea.value = text;
-  textArea.style.position = 'fixed';
-  textArea.style.left = '-9999px';
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
-  try {
-    document.execCommand('copy');
-    showToast('Chave PIX copiada para a área de transferência!');
-  } catch (err) {
-    showToast('Chave: financeiro@pibjaguapita.org.br');
-  }
-  document.body.removeChild(textArea);
+/* ==========================================================================
+   5. Contact Form Handler
+   ========================================================================== */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showToast('✓ Sua mensagem foi enviada com sucesso! Em breve entraremos em contato.');
+    form.reset();
+  });
 }
 
 /* ==========================================================================
-   4. Toast Notification System
+   6. Blog Search & Filtering
    ========================================================================== */
-function showToast(message) {
-  let toast = document.getElementById('app-toast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'app-toast';
-    toast.className = 'toast';
-    toast.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8862E" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-      <span class="toast-text"></span>
-    `;
-    document.body.appendChild(toast);
-  }
+function initBlogFilters() {
+  const searchInput = document.getElementById('blog-search');
+  const categorySelect = document.getElementById('blog-category');
 
-  toast.querySelector('.toast-text').textContent = message;
-  toast.classList.add('show');
-
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 4000);
-}
-
-/* ==========================================================================
-   5. Blog Filter & Search
-   ========================================================================== */
-function initBlogFilter() {
-  const searchInput = document.getElementById('blog-search-input');
-  const categorySelect = document.getElementById('blog-category-select');
-  const postCards = document.querySelectorAll('.blog-post-card');
-
-  if (!postCards.length) return;
+  if (!searchInput && !categorySelect) return;
 
   function filterPosts() {
     const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-    const category = categorySelect ? categorySelect.value.toLowerCase() : 'all';
+    const selectedCat = categorySelect ? categorySelect.value : 'todos';
 
-    postCards.forEach(card => {
-      const title = card.querySelector('.blog-card-title').textContent.toLowerCase();
-      const cardCategory = card.dataset.category ? card.dataset.category.toLowerCase() : '';
-      
-      const matchesSearch = title.includes(query);
-      const matchesCategory = (category === 'all' || cardCategory === category);
+    const cards = document.querySelectorAll('.blog-post-card');
+    cards.forEach(card => {
+      const cat = card.getAttribute('data-category');
+      const text = card.textContent.toLowerCase();
 
-      if (matchesSearch && matchesCategory) {
+      const matchCat = (selectedCat === 'todos' || cat === selectedCat);
+      const matchQuery = (!query || text.includes(query));
+
+      if (matchCat && matchQuery) {
         card.style.display = 'block';
       } else {
         card.style.display = 'none';
@@ -172,47 +303,23 @@ function initBlogFilter() {
 
   if (searchInput) searchInput.addEventListener('input', filterPosts);
   if (categorySelect) categorySelect.addEventListener('change', filterPosts);
-
-  // Article Reader Modal
-  const articleModal = document.getElementById('article-modal');
-  if (articleModal) {
-    const articleLinks = document.querySelectorAll('.read-article-link');
-    articleLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const card = link.closest('.blog-post-card');
-        const title = card.querySelector('.blog-card-title').textContent;
-        const date = card.querySelector('.blog-card-date').textContent;
-        const cat = card.querySelector('.blog-card-badge').textContent;
-
-        articleModal.querySelector('.article-modal-title').textContent = title;
-        articleModal.querySelector('.article-modal-date').textContent = `${date} • ${cat}`;
-        
-        articleModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    const closeBtn = articleModal.querySelector('.modal-close-btn');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        articleModal.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    }
-  }
 }
 
 /* ==========================================================================
-   6. Contact Form Validation
+   Toast Notification Utility
    ========================================================================== */
-function initContactForm() {
-  const contactForm = document.getElementById('contact-form');
-  if (!contactForm) return;
+function showToast(message) {
+  let toast = document.querySelector('.toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'toast';
+    document.body.appendChild(toast);
+  }
 
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    showToast('Sua mensagem/pedido de oração foi enviado com sucesso! Que Deus abençoe você.');
-    contactForm.reset();
-  });
+  toast.textContent = message;
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 4000);
 }

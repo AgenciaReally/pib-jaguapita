@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel Administrativo | PIB Jaguapitã</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/admin.css">
+  <link rel="icon" type="image/png" href="./assets/logo-icon.png">
+</head>
+<body class="admin-body">
+
+  <!-- ==========================================================================
+       1. LOGIN VIEW
+       ========================================================================== -->
+  <div id="login-view" class="admin-login-wrapper">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="./assets/logo-icon.png" alt="PIB Jaguapitã Logo">
+        <h1 class="login-title">Painel Administrativo</h1>
+        <p class="login-subtitle">Primeira Igreja Batista de Jaguapitã</p>
+      </div>
+
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label>Usuário Administrador</label>
+          <input type="text" id="login-user" class="form-control" placeholder="Digite seu usuário" required value="admin">
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label>Senha de Acesso</label>
+          <input type="password" id="login-pass" class="form-control" placeholder="Digite sua senha" required value="pib123">
+        </div>
+        <button type="submit" class="btn-admin btn-admin-primary" style="width: 100%; justify-content: center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <span>Entrar no Painel</span>
+        </button>
+      </form>
+      <div style="margin-top: 20px; text-align: center; font-size: 12.5px; color: var(--admin-muted);">
+        Acesso restrito à equipe pastoral e secretaria da PIB Jaguapitã.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. MAIN DASHBOARD VIEW
+       ========================================================================== -->
+  <div id="dashboard-view" class="admin-layout" style="display: none;">
+    
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <img src="./assets/logo-icon.png" alt="Logo" style="width: 36px; height: 36px;">
+        <div>
+          <div class="sidebar-brand-title">PIB Jaguapitã</div>
+          <div class="sidebar-brand-sub">Painel Admin</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-tab-item active" data-tab="tab-overview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Visão Geral</span>
+        </button>
+
+        <button class="nav-tab-item" data-tab="tab-contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Contato & Endereço</span>
+        </button>
+
+        <button class="nav-tab-item" data-tab="tab-social">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          <span>Redes Sociais</span>
+        </button>
+
+        <button class="nav-tab-item" data-tab="tab-giving">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
+          <span>Dízimos & PIX</span>
+        </button>
+
+        <button class="nav-tab-item" data-tab="tab-map">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+          <span>Localização & Mapa</span>
+        </button>
+
+        <button class="nav-tab-item" data-tab="tab-blog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>Gestão do Blog</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="btn-logout" class="btn-logout">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Sair da Sessão</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Section -->
+    <main class="admin-main">
+      
+      <!-- Topbar -->
+      <div class="admin-topbar">
+        <h2 id="topbar-title-text" class="topbar-title">Visão Geral do Site</h2>
+        <div class="topbar-user">
+          <a href="index.html" target="_blank" class="btn-admin" style="background: rgba(30, 62, 114, 0.08); color: var(--admin-primary); padding: 8px 14px; font-size: 13px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span>Ver Site ao Vivo</span>
+          </a>
+          <span style="display: inline-block; width: 1px; height: 20px; background: var(--admin-border);"></span>
+          <span>👤 Administrador</span>
+        </div>
+      </div>
+
+      <div class="admin-content">
+
+        <!-- TAB 1: VISÃO GERAL -->
+        <div id="tab-overview" class="tab-panel active">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+              <div>
+                <div id="stat-articles-count" class="stat-value">6</div>
+                <div class="stat-label">Artigos no Blog</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <div>
+                <div class="stat-value">9</div>
+                <div class="stat-label">Ministérios Ativos</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div>
+                <div class="stat-value">3</div>
+                <div class="stat-label">Cultos Semanais</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--admin-success);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div>
+                <div class="stat-value" style="color: var(--admin-success);">Ativo</div>
+                <div class="stat-label">Integração Vercel/Store</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--admin-text); margin-bottom: 14px;">Ações Rápidas de Gerenciamento</h3>
+            <p style="font-size: 14px; color: var(--admin-muted); margin-bottom: 24px;">Utilize os atalhos abaixo ou navegue pelo menu lateral para gerenciar as configurações do site em tempo real.</p>
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+              <button class="btn-admin btn-admin-primary" onclick="switchTab('tab-contact')">⚙️ Editar Informações de Contato</button>
+              <button class="btn-admin btn-admin-primary" onclick="switchTab('tab-giving')">💰 Alterar Chave PIX e Banco</button>
+              <button class="btn-admin btn-admin-primary" onclick="openNewArticleModal()">✍️ Publicar Novo Artigo no Blog</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: INFORMAÇÕES DE CONTATO -->
+        <div id="tab-contact" class="tab-panel">
+          <div class="form-card">
+            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--admin-text); margin-bottom: 20px;">Informações Gerais & Canais de Atendimento</h3>
+            <form id="form-settings-contact">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Telefone Fixo</label>
+                  <input type="text" id="setting-phone" class="form-control" placeholder="(43) 3272-1234">
+                </div>
+                <div class="form-group">
+                  <label>WhatsApp Oficial</label>
+                  <input type="text" id="setting-whatsapp" class="form-control" placeholder="(43) 99999-1234">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>E-mail Principal de Contato</label>
+                <input type="email" id="setting-email" class="form-control" placeholder="contato@pibjaguapita.org.br">
+              </div>
+              <div class="form-group">
+                <label>Endereço Físico do Templo</label>
+                <input type="text" id="setting-address" class="form-control" placeholder="R. Goiás, 160 - Centro, Jaguapitã - PR, 86610-000">
+              </div>
+              <button type="submit" class="btn-admin btn-admin-primary" style="margin-top: 10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                <span>Salvar Informações de Contato</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- TAB 3: REDES SOCIAIS -->
+        <div id="tab-social" class="tab-panel">
+          <div class="form-card">
+            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--admin-text); margin-bottom: 20px;">Links Oficiais de Redes Sociais</h3>
+            <form id="form-settings-social">
+              <div class="form-group">
+                <label>Link do Instagram</label>
+                <input type="url" id="setting-instagram" class="form-control" placeholder="https://instagram.com/pibjaguapita">
+              </div>
+              <div class="form-group">
+                <label>Link do Facebook</label>
+                <input type="url" id="setting-facebook" class="form-control" placeholder="https://facebook.com/pibjaguapita">
+              </div>
+              <div class="form-group">
+                <label>Link do Canal no YouTube</label>
+                <input type="url" id="setting-youtube" class="form-control" placeholder="https://youtube.com/c/pibjaguapita">
+              </div>
+              <button type="submit" class="btn-admin btn-admin-primary" style="margin-top: 10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                <span>Salvar Links Sociais</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- TAB 4: DÍZIMOS & OFERTAS -->
+        <div id="tab-giving" class="tab-panel">
+          <div class="form-card">
+            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--admin-text); margin-bottom: 20px;">Dados Financeiros para Dízimos & Ofertas</h3>
+            <form id="form-settings-giving">
+              <div class="form-group">
+                <label>Chave PIX Oficial (E-mail, CNPJ ou Celular)</label>
+                <input type="text" id="setting-pixKey" class="form-control" placeholder="financeiro@pibjaguapita.org.br">
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Nome do Banco</label>
+                  <input type="text" id="setting-bankName" class="form-control" placeholder="Banco do Brasil (001)">
+                </div>
+                <div class="form-group">
+                  <label>Número da Agência</label>
+                  <input type="text" id="setting-bankAgency" class="form-control" placeholder="1234-5">
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Número da Conta Corrente</label>
+                  <input type="text" id="setting-bankAccount" class="form-control" placeholder="98765-4">
+                </div>
+                <div class="form-group">
+                  <label>Razão Social / Favorecido</label>
+                  <input type="text" id="setting-bankFavored" class="form-control" placeholder="Primeira Igreja Batista de Jaguapitã">
+                </div>
+              </div>
+              <button type="submit" class="btn-admin btn-admin-primary" style="margin-top: 10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                <span>Salvar Informações Financeiras</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- TAB 5: LOCALIZAÇÃO & MAPA -->
+        <div id="tab-map" class="tab-panel">
+          <div class="form-card">
+            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--admin-text); margin-bottom: 20px;">Integração do Google Maps</h3>
+            <form id="form-settings-map">
+              <div class="form-group">
+                <label>URL Direta do Google Maps (Abrir no app/navegador)</label>
+                <input type="url" id="setting-mapsUrl" class="form-control" placeholder="https://maps.google.com/maps?q=...">
+              </div>
+              <div class="form-group">
+                <label>URL de Embed do Iframe (Exibição no site)</label>
+                <input type="url" id="setting-mapsEmbedUrl" class="form-control" placeholder="https://maps.google.com/maps?q=...&output=embed">
+              </div>
+              <button type="submit" class="btn-admin btn-admin-primary" style="margin-top: 10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                <span>Salvar Configurações do Mapa</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- TAB 6: GESTÃO DO BLOG (CRUD COMPLETO) -->
+        <div id="tab-blog" class="tab-panel">
+          <div class="admin-table-wrapper">
+            <div class="admin-table-header">
+              <div>
+                <h3 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--admin-text);">Artigos do Blog</h3>
+                <p style="font-size: 13px; color: var(--admin-muted); margin-top: 2px;">Gerencie, edite ou crie novos conteúdos para o blog da igreja.</p>
+              </div>
+              <button class="btn-admin btn-admin-primary" onclick="openNewArticleModal()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Novo Artigo</span>
+              </button>
+            </div>
+
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th style="width: 70px;">Capa</th>
+                  <th>Título do Artigo</th>
+                  <th>Categoria</th>
+                  <th>Data</th>
+                  <th style="text-align: right;">Ações</th>
+                </tr>
+              </thead>
+              <tbody id="admin-blog-tbody">
+                <!-- Dynamic rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       3. MODAL DE EDIÇÃO E CRIAÇÃO DE ARTIGOS
+       ========================================================================== -->
+  <div id="article-crud-modal" class="admin-modal-backdrop">
+    <div class="admin-modal-card">
+      <div style="padding: 24px 28px; border-bottom: 1px solid var(--admin-border); display: flex; justify-content: space-between; align-items: center;">
+        <h3 id="crud-modal-title" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: var(--admin-text);">Publicar Novo Artigo</h3>
+        <button id="crud-modal-close" style="background: none; border: none; font-size: 24px; color: var(--admin-muted); cursor: pointer;">&times;</button>
+      </div>
+
+      <form id="form-article-crud" style="padding: 28px;">
+        <input type="hidden" id="crud-article-id">
+        
+        <div class="form-group">
+          <label>Título do Artigo *</label>
+          <input type="text" id="crud-title" class="form-control" placeholder="Ex: O Poder da Oração em Família" required>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Categoria *</label>
+            <select id="crud-category" class="form-control" required>
+              <option value="devocional">Devocional</option>
+              <option value="estudo">Estudo Bíblico</option>
+              <option value="familia">Família</option>
+              <option value="discipulado">Discipulado</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Data de Publicação</label>
+            <input type="text" id="crud-date" class="form-control" placeholder="Ex: 20 AGO 2026">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Caminho / URL da Imagem de Capa *</label>
+          <input type="text" id="crud-image" class="form-control" placeholder="./assets/blog_oracao.jpg" required>
+        </div>
+
+        <div class="form-group">
+          <label>Resumo Curto (Exibido nos cartões) *</label>
+          <textarea id="crud-summary" class="form-control" rows="2" placeholder="Pequena síntese do tema..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Conteúdo Completo do Artigo *</label>
+          <textarea id="crud-content" class="form-control" rows="6" placeholder="Escreva o texto completo do estudo ou devocional..." required></textarea>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
+          <button type="button" id="crud-modal-cancel" class="btn-admin" style="background: var(--admin-border); color: var(--admin-text);">Cancelar</button>
+          <button type="submit" class="btn-admin btn-admin-primary">Salvar Artigo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="./js/store.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Auth Check
+      if (PIBStore.isAuthenticated()) {
+        showDashboard();
+      } else {
+        showLogin();
+      }
+
+      // 2. Login Submit
+      document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const u = document.getElementById('login-user').value.trim();
+        const p = document.getElementById('login-pass').value.trim();
+
+        if (PIBStore.login(u, p)) {
+          showDashboard();
+          showToast('✓ Login realizado com sucesso! Bem-vindo ao Painel.');
+        } else {
+          showToast('❌ Usuário ou senha incorretos! (Padrão: admin / pib123)');
+        }
+      });
+
+      // 3. Logout
+      document.getElementById('btn-logout').addEventListener('click', () => {
+        PIBStore.logout();
+        showLogin();
+        showToast('✓ Você saiu do Painel Administrativo.');
+      });
+
+      // 4. Tab Navigation
+      document.querySelectorAll('.nav-tab-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetTab = btn.getAttribute('data-tab');
+          switchTab(targetTab);
+        });
+      });
+
+      // 5. Populate Forms from Store
+      loadSettingsToForms();
+
+      // 6. Save Contact Settings Form
+      document.getElementById('form-settings-contact').addEventListener('submit', (e) => {
+        e.preventDefault();
+        PIBStore.saveSettings({
+          phone: document.getElementById('setting-phone').value,
+          whatsapp: document.getElementById('setting-whatsapp').value,
+          email: document.getElementById('setting-email').value,
+          address: document.getElementById('setting-address').value
+        });
+        showToast('✓ Informações de contato salvas e integradas ao site!');
+      });
+
+      // 7. Save Social Settings Form
+      document.getElementById('form-settings-social').addEventListener('submit', (e) => {
+        e.preventDefault();
+        PIBStore.saveSettings({
+          instagramUrl: document.getElementById('setting-instagram').value,
+          facebookUrl: document.getElementById('setting-facebook').value,
+          youtubeUrl: document.getElementById('setting-youtube').value
+        });
+        showToast('✓ Links de redes sociais salvos e integrados ao rodapé!');
+      });
+
+      // 8. Save Giving Settings Form
+      document.getElementById('form-settings-giving').addEventListener('submit', (e) => {
+        e.preventDefault();
+        PIBStore.saveSettings({
+          pixKey: document.getElementById('setting-pixKey').value,
+          bankName: document.getElementById('setting-bankName').value,
+          bankAgency: document.getElementById('setting-bankAgency').value,
+          bankAccount: document.getElementById('setting-bankAccount').value,
+          bankFavored: document.getElementById('setting-bankFavored').value
+        });
+        showToast('✓ Chave PIX e dados bancários atualizados com sucesso!');
+      });
+
+      // 9. Save Map Settings Form
+      document.getElementById('form-settings-map').addEventListener('submit', (e) => {
+        e.preventDefault();
+        PIBStore.saveSettings({
+          mapsUrl: document.getElementById('setting-mapsUrl').value,
+          mapsEmbedUrl: document.getElementById('setting-mapsEmbedUrl').value
+        });
+        showToast('✓ Configurações do Google Maps salvas com sucesso!');
+      });
+
+      // 10. CRUD Blog Modal Handlers
+      const crudModal = document.getElementById('article-crud-modal');
+      const closeCrudModal = () => crudModal.classList.remove('active');
+      document.getElementById('crud-modal-close').onclick = closeCrudModal;
+      document.getElementById('crud-modal-cancel').onclick = closeCrudModal;
+
+      document.getElementById('form-article-crud').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('crud-article-id').value;
+        const postData = {
+          title: document.getElementById('crud-title').value,
+          category: document.getElementById('crud-category').value,
+          date: document.getElementById('crud-date').value || new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase(),
+          image: document.getElementById('crud-image').value,
+          summary: document.getElementById('crud-summary').value,
+          content: document.getElementById('crud-content').value
+        };
+
+        if (id) {
+          PIBStore.updateBlogPost(id, postData);
+          showToast('✓ Artigo atualizado com sucesso!');
+        } else {
+          PIBStore.addBlogPost(postData);
+          showToast('✓ Novo artigo publicado no blog com sucesso!');
+        }
+
+        closeCrudModal();
+        renderAdminBlogTable();
+        updateOverviewStats();
+      });
+    });
+
+    /* View Switchers */
+    function showLogin() {
+      document.getElementById('login-view').style.display = 'flex';
+      document.getElementById('dashboard-view').style.display = 'none';
+    }
+
+    function showDashboard() {
+      document.getElementById('login-view').style.display = 'none';
+      document.getElementById('dashboard-view').style.display = 'flex';
+      renderAdminBlogTable();
+      updateOverviewStats();
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.nav-tab-item').forEach(btn => {
+        if (btn.getAttribute('data-tab') === tabId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      const activePanel = document.getElementById(tabId);
+      if (activePanel) activePanel.classList.add('active');
+
+      const titleMap = {
+        'tab-overview': 'Visão Geral do Site',
+        'tab-contact': 'Contato & Endereço',
+        'tab-social': 'Redes Sociais',
+        'tab-giving': 'Dízimos & PIX',
+        'tab-map': 'Localização & Mapa',
+        'tab-blog': 'Gestão do Blog'
+      };
+      document.getElementById('topbar-title-text').textContent = titleMap[tabId] || 'Painel Admin';
+    }
+
+    /* Populate Forms */
+    function loadSettingsToForms() {
+      const s = PIBStore.getSettings();
+      document.getElementById('setting-phone').value = s.phone || '';
+      document.getElementById('setting-whatsapp').value = s.whatsapp || '';
+      document.getElementById('setting-email').value = s.email || '';
+      document.getElementById('setting-address').value = s.address || '';
+
+      document.getElementById('setting-instagram').value = s.instagramUrl || '';
+      document.getElementById('setting-facebook').value = s.facebookUrl || '';
+      document.getElementById('setting-youtube').value = s.youtubeUrl || '';
+
+      document.getElementById('setting-pixKey').value = s.pixKey || '';
+      document.getElementById('setting-bankName').value = s.bankName || '';
+      document.getElementById('setting-bankAgency').value = s.bankAgency || '';
+      document.getElementById('setting-bankAccount').value = s.bankAccount || '';
+      document.getElementById('setting-bankFavored').value = s.bankFavored || '';
+
+      document.getElementById('setting-mapsUrl').value = s.mapsUrl || '';
+      document.getElementById('setting-mapsEmbedUrl').value = s.mapsEmbedUrl || '';
+    }
+
+    /* Blog CRUD Table Rendering */
+    function renderAdminBlogTable() {
+      const tbody = document.getElementById('admin-blog-tbody');
+      if (!tbody) return;
+
+      const posts = PIBStore.getBlogPosts();
+      tbody.innerHTML = posts.map(post => `
+        <tr>
+          <td>
+            <img src="${post.image}" alt="${post.title}" style="width: 48px; height: 38px; object-fit: cover; border-radius: 4px;">
+          </td>
+          <td style="font-weight: 600; color: var(--admin-text);">${post.title}</td>
+          <td><span class="badge-cat">${post.categoryLabel || post.category}</span></td>
+          <td style="color: var(--admin-muted); font-size: 13px;">${post.date}</td>
+          <td style="text-align: right;">
+            <div class="table-actions" style="justify-content: flex-end;">
+              <button class="btn-icon-action" onclick="openEditArticleModal('${post.id}')" title="Editar Artigo">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              </button>
+              <button class="btn-icon-action danger" onclick="deleteArticle('${post.id}')" title="Excluir Artigo">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function updateOverviewStats() {
+      const posts = PIBStore.getBlogPosts();
+      document.getElementById('stat-articles-count').textContent = posts.length;
+    }
+
+    function openNewArticleModal() {
+      document.getElementById('crud-modal-title').textContent = 'Publicar Novo Artigo';
+      document.getElementById('crud-article-id').value = '';
+      document.getElementById('crud-title').value = '';
+      document.getElementById('crud-category').value = 'devocional';
+      document.getElementById('crud-date').value = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+      document.getElementById('crud-image').value = './assets/blog_oracao.jpg';
+      document.getElementById('crud-summary').value = '';
+      document.getElementById('crud-content').value = '';
+
+      document.getElementById('article-crud-modal').classList.add('active');
+    }
+
+    function openEditArticleModal(id) {
+      const post = PIBStore.getBlogPostById(id);
+      if (!post) return;
+
+      document.getElementById('crud-modal-title').textContent = 'Editar Artigo';
+      document.getElementById('crud-article-id').value = post.id;
+      document.getElementById('crud-title').value = post.title;
+      document.getElementById('crud-category').value = post.category;
+      document.getElementById('crud-date').value = post.date;
+      document.getElementById('crud-image').value = post.image;
+      document.getElementById('crud-summary').value = post.summary;
+      document.getElementById('crud-content').value = post.content;
+
+      document.getElementById('article-crud-modal').classList.add('active');
+    }
+
+    function deleteArticle(id) {
+      if (confirm('Tem certeza de que deseja excluir este artigo do blog?')) {
+        PIBStore.deleteBlogPost(id);
+        showToast('✓ Artigo excluído com sucesso!');
+        renderAdminBlogTable();
+        updateOverviewStats();
+      }
+    }
+
+    function showToast(msg) {
+      let toast = document.querySelector('.toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+    }
+  </script>
+</body>
+</html>
