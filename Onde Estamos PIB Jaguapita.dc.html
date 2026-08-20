@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=1440">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #FAFAF8; font-family: "Public Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #1E3E72; text-decoration: none; }
+  a:hover { color: #23477E; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div style="background: #FAFAF8">
+
+  <div style="position: sticky; top: 0; z-index: 40; background: rgba(250,250,248,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid #E6E4DD">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px">
+      <div style="display: flex; align-items: center; gap: 14px">
+        <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã" style="width: 40px; height: 40px; object-fit: contain; flex: none">
+        <div style="line-height: 1.18">
+          <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; color: #1C1C1C">Primeira Igreja Batista</div>
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8A8783; font-weight: 600">de Jaguapitã</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 34px">
+        <div style="display: flex; align-items: center; gap: 30px; font-size: 14.5px; font-weight: 500; color: #4A4A47">
+          <div>Início</div>
+          <div>Sobre</div>
+          <div>Ministérios</div>
+          <div>Blog</div>
+          <div>Contato</div>
+        </div>
+        <div style="background: {{ accent }}; color: #fff; font-size: 14px; font-weight: 600; padding: 13px 24px; letter-spacing: 0.01em">Planeje sua Visita</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; background: #10182B; min-height: 300px; display: flex; align-items: center; overflow: hidden">
+    <image-slot id="banner-photo" shape="rect" placeholder="Foto: fachada do templo / rua de acesso" style="position: absolute; inset: 0; width: 100%; height: 100%"></image-slot>
+    <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(9,13,26,0.92) 0%, rgba(9,13,26,0.76) 55%, rgba(9,13,26,0.56) 100%); pointer-events: none"></div>
+    <svg width="170" height="170" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="0.6" style="position: absolute; right: 70px; top: 50%; transform: translateY(-50%); opacity: 0.08; pointer-events: none">
+      <path d="M12 21s-7-4.6-7-11a7 7 0 1 1 14 0c0 6.4-7 11-7 11z"></path><circle cx="12" cy="10" r="2.6"></circle>
+    </svg>
+    <div style="position: relative; max-width: 1200px; width: 100%; margin: 0 auto; padding: 60px 40px">
+      <div style="font-size: 13px; color: rgba(255,255,255,0.62); font-weight: 500; display: flex; gap: 8px; align-items: center">
+        <span>Início</span><span>/</span><span style="color: #fff; font-weight: 600">Onde Estamos</span>
+      </div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 48px; color: #fff; margin-top: 16px">Onde Estamos</div>
+      <div style="font-size: 17px; color: rgba(255,255,255,0.78); margin-top: 14px">Venha nos fazer uma visita</div>
+    </div>
+  </div>
+
+  <div style="max-width: 720px; margin: 0 auto; padding: 88px 40px 0; text-align: center">
+    <div style="font-size: 17px; line-height: 1.8; color: #555555; text-wrap: pretty">Será uma alegria receber você em nossa igreja. Estamos localizados no centro de Jaguapitã, em um local de fácil acesso.</div>
+    <div style="font-size: 17px; line-height: 1.8; color: #555555; margin-top: 18px; text-wrap: pretty">Venha participar de um de nossos cultos e conhecer de perto a nossa comunidade de fé.</div>
+  </div>
+
+  <div style="max-width: 1200px; margin: 72px auto 0; padding: 0 40px 108px">
+    <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px">
+
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; color: {{ accent }}">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-11a7 7 0 1 1 14 0c0 6.4-7 11-7 11z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>
+          <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; color: #1C1C1C">Nosso Endereço</div>
+        </div>
+        <div style="margin-top: 18px">
+          <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 17px; color: #1C1C1C">Primeira Igreja Batista de Jaguapitã</div>
+          <div style="font-size: 15.5px; line-height: 1.7; color: #555555; margin-top: 8px">R. Goiás, 160 - Centro,<br>Jaguapitã - PR, 86610-000</div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; color: {{ accent }}; margin-top: 48px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
+          <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; color: #1C1C1C">Horários dos Cultos</div>
+        </div>
+
+        <div style="margin-top: 22px; display: flex; flex-direction: column; gap: 22px">
+          <div style="display: flex; align-items: flex-start; gap: 14px">
+            <div style="color: {{ accent }}; margin-top: 2px">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="16" y1="3" x2="16" y2="7"></line></svg>
+            </div>
+            <div>
+              <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 17px; color: #1C1C1C">Domingo</div>
+              <div style="font-size: 15px; color: #555555; margin-top: 8px; display: flex; flex-direction: column; gap: 6px">
+                <div>Escola Bíblica — <span style="color: {{ accent }}; font-weight: 700">09h00</span></div>
+                <div>Culto de Adoração — <span style="color: {{ accent }}; font-weight: 700">19h30</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px">
+            <div style="color: {{ accent }}; margin-top: 2px">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="16" y1="3" x2="16" y2="7"></line></svg>
+            </div>
+            <div>
+              <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 17px; color: #1C1C1C">Quarta-feira</div>
+              <div style="font-size: 15px; color: #555555; margin-top: 8px">Culto de Oração e Estudo Bíblico — <span style="color: {{ accent }}; font-weight: 700">19h30</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; color: {{ accent }}">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c0-4 3-7 8-7s8 3 8 7"></path><path d="M4 15h16"></path><path d="M16 8l3-3"></path></svg>
+          <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; color: #1C1C1C">Como Chegar</div>
+        </div>
+        <div style="font-size: 15.5px; line-height: 1.7; color: #666666; margin-top: 14px">Use o mapa abaixo para traçar sua rota até a igreja com facilidade.</div>
+
+        <div style="position: relative; aspect-ratio: 4/3.1; margin-top: 22px; background: #EDECE6; border: 1px solid #DDDBD3; overflow: hidden">
+          <svg width="100%" height="100%" viewBox="0 0 400 300" style="position: absolute; inset: 0">
+            <rect width="400" height="300" fill="#EDECE6"></rect>
+            <path d="M0 60 H400" stroke="#D8D6CD" stroke-width="10"></path>
+            <path d="M0 190 H400" stroke="#D8D6CD" stroke-width="14"></path>
+            <path d="M90 0 V300" stroke="#D8D6CD" stroke-width="10"></path>
+            <path d="M280 0 V300" stroke="#D8D6CD" stroke-width="8"></path>
+            <path d="M0 240 H400" stroke="#DEDCD3" stroke-width="6"></path>
+            <path d="M180 0 V300" stroke="#DEDCD3" stroke-width="6"></path>
+          </svg>
+          <div style="position: absolute; left: 50%; top: 46%; transform: translate(-50%,-100%)">
+            <svg width="40" height="52" viewBox="0 0 24 30" style="filter: drop-shadow(0 6px 6px rgba(16,24,43,0.35))">
+              <path d="M12 0C6 0 1 5 1 11c0 7.5 11 18 11 18s11-10.5 11-18c0-6-5-11-11-11z" fill="{{ accent }}"></path>
+              <circle cx="12" cy="11" r="4.2" fill="#fff"></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="background: #F4F4F2; border-top: 1px solid #E6E4DD">
+    <div style="max-width: 720px; margin: 0 auto; padding: 80px 40px; text-align: center">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 30px; color: #1C1C1C">Esperamos por você!</div>
+      <div style="font-size: 16px; line-height: 1.8; color: #555555; margin-top: 18px; text-wrap: pretty">Não é preciso agendar nem avisar — basta chegar. Ficaremos muito felizes em recebê-lo em nossa igreja.</div>
+      <div style="border-left: 3px solid {{ accentGold }}; padding: 8px 0 8px 28px; margin-top: 30px; display: inline-block; text-align: left">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-style: italic; font-size: 20px; line-height: 1.6; color: #1C1C1C">"Alegrei-me quando me disseram: Vamos à Casa do Senhor."</div>
+        <div style="font-size: 14px; font-weight: 700; color: {{ accentGold }}; margin-top: 14px; letter-spacing: 0.02em">Salmos 122:1</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #0D1424; color: #fff">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 40px 0">
+      <div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 60px">
+        <div>
+          <div style="display: flex; align-items: center; gap: 14px">
+            <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã" style="width: 38px; height: 38px; object-fit: contain; flex: none">
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; line-height: 1.3">Primeira Igreja Batista<br>de Jaguapitã</div>
+          </div>
+          <div style="font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.6); margin-top: 20px; max-width: 400px; text-wrap: pretty">Uma comunidade de cristãos reunidos para adorar a Deus, crescer na Palavra e anunciar o Evangelho de Jesus Cristo em Jaguapitã e além.</div>
+        </div>
+        <div>
+          <div style="font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700">Endereço</div>
+          <div style="font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.68); margin-top: 16px">R. Goiás, 160 - Centro,<br>Jaguapitã - PR, 86610-000</div>
+        </div>
+        <div>
+          <div style="font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700">Redes sociais</div>
+          <div style="display: flex; gap: 12px; margin-top: 16px">
+            <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.78)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none"></circle></svg>
+            </div>
+            <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.78)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9h2V6h-2c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14V9z"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 56px; border-top: 1px solid rgba(255,255,255,0.12); padding: 24px 0 30px; display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.48)">
+        <div>© 2026 Primeira Igreja Batista de Jaguapitã. Todos os direitos reservados.</div>
+        <div>Política de Privacidade</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;goldAccent&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Estilo&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const gold = this.props.goldAccent ?? true;
+    return {
+      accent: '#1E3E72',
+      accentGold: gold ? '#B8862E' : 'rgba(28,28,28,0.4)'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=1440">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #FAFAF8; font-family: "Public Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #1E3E72; text-decoration: none; }
+  a:hover { color: #23477E; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div style="background: #FAFAF8">
+
+  <div style="position: sticky; top: 0; z-index: 40; background: rgba(250,250,248,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid #E6E4DD">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px">
+      <div style="display: flex; align-items: center; gap: 14px">
+        <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã" style="width: 40px; height: 40px; object-fit: contain; flex: none">
+        <div style="line-height: 1.18">
+          <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; color: #1C1C1C">Primeira Igreja Batista</div>
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8A8783; font-weight: 600">de Jaguapitã</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 34px">
+        <div style="display: flex; align-items: center; gap: 30px; font-size: 14.5px; font-weight: 500; color: #4A4A47">
+          <div>Início</div>
+          <div>Sobre</div>
+          <div>Ministérios</div>
+          <div>Blog</div>
+          <div>Contato</div>
+        </div>
+        <div style="background: {{ accent }}; color: #fff; font-size: 14px; font-weight: 600; padding: 13px 24px; letter-spacing: 0.01em">Planeje sua Visita</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; background: #10182B; min-height: 340px; display: flex; align-items: center; overflow: hidden">
+    <image-slot id="banner-photo" shape="rect" placeholder="Foto: cruz / Bíblia aberta / luz no templo" style="position: absolute; inset: 0; width: 100%; height: 100%"></image-slot>
+    <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(9,13,26,0.92) 0%, rgba(9,13,26,0.76) 55%, rgba(9,13,26,0.56) 100%); pointer-events: none"></div>
+    <svg width="220" height="220" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="0.6" style="position: absolute; right: 60px; top: 50%; transform: translateY(-50%); opacity: 0.08; pointer-events: none">
+      <line x1="12" y1="2" x2="12" y2="22"></line><line x1="5" y1="8" x2="19" y2="8"></line>
+    </svg>
+    <div style="position: relative; max-width: 1200px; width: 100%; margin: 0 auto; padding: 64px 40px">
+      <div style="font-size: 13px; color: rgba(255,255,255,0.62); font-weight: 500; display: flex; gap: 8px; align-items: center">
+        <span>Início</span><span>/</span><span style="color: #fff; font-weight: 600">Evangelho de Jesus</span>
+      </div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 48px; color: #fff; margin-top: 18px">Evangelho de Jesus</div>
+      <div style="font-size: 17px; color: rgba(255,255,255,0.78); margin-top: 14px">As Boas-Novas de Deus para toda a humanidade</div>
+    </div>
+  </div>
+
+  <div style="max-width: 720px; margin: 0 auto; padding: 108px 40px 0">
+
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 26px; line-height: 1.5; color: #1C1C1C; text-wrap: pretty">O que significa a palavra "evangelho"?</div>
+    <div style="font-size: 17.5px; line-height: 1.85; color: #444444; margin-top: 20px; text-wrap: pretty">A palavra evangelho significa "boas novas" ou "boa notícia". Mas boa notícia sobre o quê? Para respondermos essa pergunta, precisamos primeiro entender duas verdades fundamentais: quem é Deus, e quem somos nós diante d'Ele.</div>
+
+    <div style="font-size: 17.5px; line-height: 1.85; color: #444444; margin-top: 32px; text-wrap: pretty">Deus é absolutamente santo, justo e perfeito. Ele criou todas as coisas para refletirem Sua glória, e criou o ser humano à Sua própria imagem, para que vivêssemos em comunhão com Ele, amando-O e glorificando-O em tudo.</div>
+    <div style="font-size: 17.5px; line-height: 1.85; color: #444444; margin-top: 26px; text-wrap: pretty">Mas a Bíblia ensina que todos nós pecamos e nos rebelamos contra Deus. Nossa desobediência nos separou d'Ele e nos tornou merecedores de Sua justa condenação. Por mais boas que nossas intenções possam parecer, nenhum esforço humano é suficiente para reparar essa separação ou nos tornar dignos da presença de um Deus perfeitamente santo.</div>
+
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 27px; line-height: 1.5; color: #1E3E72; text-align: center; margin: 56px 0; text-wrap: pretty">Mas Deus, em Seu infinito amor e misericórdia, providenciou o único caminho para a salvação.</div>
+
+    <div style="font-size: 17.5px; line-height: 1.85; color: #444444; text-wrap: pretty">Deus enviou Seu único Filho, Jesus Cristo, que viveu uma vida perfeita e sem pecado, e voluntariamente entregou-se à morte na cruz, carregando sobre Si o castigo que nós merecíamos.</div>
+    <div style="font-size: 17.5px; line-height: 1.85; color: #444444; margin-top: 26px; text-wrap: pretty">Na cruz, a justiça e o amor de Deus se encontraram: Jesus pagou a dívida que não podíamos pagar, satisfazendo a justa ira de Deus contra o pecado e, ao mesmo tempo, revelando a profundidade do Seu amor por nós.</div>
+    <div style="font-size: 17.5px; line-height: 1.85; color: #444444; margin-top: 26px; text-wrap: pretty">Três dias depois, Jesus ressuscitou dos mortos, vencendo o pecado e a morte, e provando que é, de fato, o Filho de Deus e o Salvador prometido nas Escrituras.</div>
+    <div style="font-size: 17.5px; line-height: 1.85; color: #444444; margin-top: 26px; text-wrap: pretty">A salvação não pode ser conquistada por boas obras, rituais ou méritos pessoais — ela é um dom gratuito de Deus, recebido unicamente pela fé em Jesus Cristo. Todo aquele que se arrepende de seus pecados e crê nEle recebe o perdão e a vida eterna.</div>
+
+    <div style="font-size: 17.5px; line-height: 1.85; color: #444444; margin-top: 26px; text-wrap: pretty">Se você nunca colocou sua fé em Jesus Cristo, convidamos você a conhecê-lo hoje. Não é preciso estar preparado ou ser perfeito — basta reconhecer sua necessidade de um Salvador e confiar naquele que já pagou o preço por você.</div>
+
+  </div>
+
+  <div style="max-width: 720px; margin: 72px auto 0; padding: 0 40px 108px">
+    <div style="background: #F4F4F2; border-left: 3px solid {{ accent }}; padding: 44px 48px">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ accentGold }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8c-2 0-3.5 1.6-3.5 3.7 0 1.9 1.3 3.3 3 3.3.3 2-1 3.6-3 4"></path><path d="M17 8c-2 0-3.5 1.6-3.5 3.7 0 1.9 1.3 3.3 3 3.3.3 2-1 3.6-3 4"></path></svg>
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #8A8783; font-weight: 700; margin-top: 16px">O convite de Jesus</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-style: italic; font-size: 22px; line-height: 1.6; color: #1C1C1C; margin-top: 14px; text-wrap: pretty">"Vinde a mim, todos os que estais cansados e sobrecarregados, e eu vos aliviarei."</div>
+      <div style="font-size: 14px; font-weight: 700; color: {{ accentGold }}; margin-top: 16px; letter-spacing: 0.02em">Mateus 11:28</div>
+    </div>
+  </div>
+
+  <div style="position: relative; background: #10182B; overflow: hidden">
+    <image-slot id="cta-photo" shape="rect" placeholder="Foto: pessoas em oração / conversando após o culto" style="position: absolute; inset: 0; width: 100%; height: 100%"></image-slot>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,15,29,0.92) 0%, rgba(8,12,24,0.9) 100%); pointer-events: none"></div>
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 104px 40px; display: flex; flex-direction: column; align-items: center; text-align: center">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 38px; color: #fff">Deseja conhecer mais?</div>
+      <div style="font-size: 17px; line-height: 1.8; color: rgba(255,255,255,0.84); margin-top: 22px; max-width: 700px; text-wrap: pretty">Ficaremos felizes em conversar com você sobre a fé em Jesus Cristo e responder suas perguntas, sem compromisso.</div>
+      <div style="display: flex; gap: 14px; margin-top: 38px">
+        <div style="background: #fff; color: #10182B; font-size: 15px; font-weight: 700; padding: 17px 32px">Fale Conosco</div>
+        <div style="border: 1.5px solid rgba(255,255,255,0.75); color: #fff; font-size: 15px; font-weight: 600; padding: 15.5px 32px">Planeje sua Visita</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #0D1424; color: #fff">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 40px 0">
+      <div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 60px">
+        <div>
+          <div style="display: flex; align-items: center; gap: 14px">
+            <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã" style="width: 38px; height: 38px; object-fit: contain; flex: none">
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; line-height: 1.3">Primeira Igreja Batista<br>de Jaguapitã</div>
+          </div>
+          <div style="font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.6); margin-top: 20px; max-width: 400px; text-wrap: pretty">Uma comunidade de cristãos reunidos para adorar a Deus, crescer na Palavra e anunciar o Evangelho de Jesus Cristo em Jaguapitã e além.</div>
+        </div>
+        <div>
+          <div style="font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700">Endereço</div>
+          <div style="font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.68); margin-top: 16px">R. Goiás, 160 - Centro,<br>Jaguapitã - PR, 86610-000</div>
+        </div>
+        <div>
+          <div style="font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700">Redes sociais</div>
+          <div style="display: flex; gap: 12px; margin-top: 16px">
+            <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.78)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none"></circle></svg>
+            </div>
+            <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.78)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9h2V6h-2c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14V9z"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 56px; border-top: 1px solid rgba(255,255,255,0.12); padding: 24px 0 30px; display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.48)">
+        <div>© 2026 Primeira Igreja Batista de Jaguapitã. Todos os direitos reservados.</div>
+        <div>Política de Privacidade</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;goldAccent&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Estilo&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const gold = this.props.goldAccent ?? true;
+    return {
+      accent: '#1E3E72',
+      accentGold: gold ? '#B8862E' : 'rgba(28,28,28,0.4)'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=1440">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #FAFAF8; font-family: "Public Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #1E3E72; text-decoration: none; }
+  a:hover { color: #23477E; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div style="background: #FAFAF8">
+
+  <div style="position: sticky; top: 0; z-index: 40; background: rgba(250,250,248,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid #E6E4DD">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px">
+      <div style="display: flex; align-items: center; gap: 14px">
+        <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã" style="width: 40px; height: 40px; object-fit: contain; flex: none">
+        <div style="line-height: 1.18">
+          <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; color: #1C1C1C">Primeira Igreja Batista</div>
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8A8783; font-weight: 600">de Jaguapitã</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 34px">
+        <div style="display: flex; align-items: center; gap: 30px; font-size: 14.5px; font-weight: 500; color: #4A4A47">
+          <div>Início</div>
+          <div>Sobre</div>
+          <div style="color: {{ accent }}; font-weight: 600; padding-bottom: 3px; border-bottom: 2px solid {{ accent }}">Ministérios</div>
+          <div>Blog</div>
+          <div>Contato</div>
+        </div>
+        <div style="background: {{ accent }}; color: #fff; font-size: 14px; font-weight: 600; padding: 13px 24px; letter-spacing: 0.01em">Planeje sua Visita</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; background: #10182B; min-height: 300px; display: flex; align-items: center; overflow: hidden">
+    <image-slot id="banner-photo" shape="rect" placeholder="Foto: culto / comunhão entre ministérios" style="position: absolute; inset: 0; width: 100%; height: 100%"></image-slot>
+    <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(9,13,26,0.9) 0%, rgba(9,13,26,0.72) 55%, rgba(9,13,26,0.5) 100%); pointer-events: none"></div>
+    <div style="position: relative; max-width: 1200px; width: 100%; margin: 0 auto; padding: 60px 40px">
+      <div style="font-size: 13px; color: rgba(255,255,255,0.62); font-weight: 500; display: flex; gap: 8px; align-items: center">
+        <span>Início</span><span>/</span><span style="color: #fff; font-weight: 600">Ministérios</span>
+      </div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 48px; color: #fff; margin-top: 16px">Ministérios</div>
+    </div>
+  </div>
+
+  <div style="max-width: 1200px; margin: 0 auto; padding: 100px 40px; border-bottom: 1px solid #E6E4DD">
+    <div style="text-align: center; max-width: 680px; margin: 0 auto">
+      <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: {{ accentGold }}; font-weight: 700">Liderança</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #1C1C1C; margin-top: 16px">Quem caminha à frente conosco</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 64px; max-width: 860px; margin-left: auto; margin-right: auto">
+      <div style="text-align: center">
+        <div style="width: 148px; height: 148px; margin: 0 auto; position: relative; border-radius: 50%; padding: 4px; border: 1.5px solid {{ accentGold }}">
+          <image-slot id="pastor-photo" shape="circle" placeholder="Foto do Pastor" style="width: 100%; height: 100%"></image-slot>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 22px">Nilson Missão</div>
+        <div style="font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #8A8783; font-weight: 600; margin-top: 6px">Pastor Presidente</div>
+      </div>
+      <div style="text-align: center">
+        <div style="display: flex; gap: 28px; justify-content: center">
+          <div style="text-align: center">
+            <div style="width: 116px; height: 116px; margin: 0 auto; border-radius: 50%; padding: 4px; border: 1.5px solid {{ accentGold }}">
+              <image-slot id="conselho-1-photo" shape="circle" placeholder="Foto" style="width: 100%; height: 100%"></image-slot>
+            </div>
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16.5px; color: #1C1C1C; margin-top: 18px">Newton</div>
+          </div>
+          <div style="text-align: center">
+            <div style="width: 116px; height: 116px; margin: 0 auto; border-radius: 50%; padding: 4px; border: 1.5px solid {{ accentGold }}">
+              <image-slot id="conselho-2-photo" shape="circle" placeholder="Foto" style="width: 100%; height: 100%"></image-slot>
+            </div>
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16.5px; color: #1C1C1C; margin-top: 18px">Nivaldo</div>
+          </div>
+        </div>
+        <div style="font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #8A8783; font-weight: 600; margin-top: 18px">Conselho</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width: 1200px; margin: 0 auto; padding: 100px 40px">
+    <div style="text-align: center">
+      <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: {{ accentGold }}; font-weight: 700">Ministérios</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 34px; color: #1C1C1C; margin-top: 16px">Há um lugar para você servir</div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px">
+
+      <div style="background: #fff; border: 1px solid #E2E0D9; padding: 36px 32px">
+        <div style="width: 46px; height: 46px; border: 1.5px solid {{ accent }}; display: flex; align-items: center; justify-content: center; color: {{ accent }}">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path></svg>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 20px">Homens</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #555555; margin-top: 9px; text-wrap: pretty">Encontros voltados ao fortalecimento da fé, do caráter e da liderança cristã dos homens da igreja.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #E2E0D9; padding: 36px 32px">
+        <div style="width: 46px; height: 46px; border: 1.5px solid {{ accent }}; display: flex; align-items: center; justify-content: center; color: {{ accent }}">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 8.5c0 5-8.5 10.5-8.5 10.5S3.5 13.5 3.5 8.5a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"></path></svg>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 20px">Mulheres</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #555555; margin-top: 9px; text-wrap: pretty">Momentos de oração, estudo bíblico e comunhão entre as mulheres da igreja.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #E2E0D9; padding: 36px 32px">
+        <div style="width: 46px; height: 46px; border: 1.5px solid {{ accent }}; display: flex; align-items: center; justify-content: center; color: {{ accent }}">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1.8 2.2 3 4 3 6a3 3 0 1 1-6 0c0-2 1.2-3.8 3-6z"></path><line x1="12" y1="11" x2="12" y2="21"></line><line x1="8" y1="21" x2="16" y2="21"></line></svg>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 20px">Juventude</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #555555; margin-top: 9px; text-wrap: pretty">Discipulado, comunhão e crescimento espiritual para adolescentes e jovens.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #E2E0D9; padding: 36px 32px">
+        <div style="width: 46px; height: 46px; border: 1.5px solid {{ accent }}; display: flex; align-items: center; justify-content: center; color: {{ accent }}">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"></path><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"></path><line x1="9" y1="9" x2="9" y2="13"></line></svg>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 20px">Adolescentes</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #555555; margin-top: 9px; text-wrap: pretty">Ensino bíblico direcionado às particularidades da fase da adolescência.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #E2E0D9; padding: 36px 32px">
+        <div style="width: 46px; height: 46px; border: 1.5px solid {{ accent }}; display: flex; align-items: center; justify-content: center; color: {{ accent }}">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.9 6.4.6-4.9 4.3 1.5 6.3L12 16.9 6.4 20.1l1.5-6.3L3 9.5l6.4-.6z"></path></svg>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 20px">Infantil</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #555555; margin-top: 9px; text-wrap: pretty">Ensino bíblico para crianças em um ambiente seguro e acolhedor.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #E2E0D9; padding: 36px 32px">
+        <div style="width: 46px; height: 46px; border: 1.5px solid {{ accent }}; display: flex; align-items: center; justify-content: center; color: {{ accent }}">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="16" cy="16" r="3"></circle></svg>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 20px">Música</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #555555; margin-top: 9px; text-wrap: pretty">Servindo à igreja por meio do louvor congregacional e da adoração musical.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #E2E0D9; padding: 36px 32px">
+        <div style="width: 46px; height: 46px; border: 1.5px solid {{ accent }}; display: flex; align-items: center; justify-content: center; color: {{ accent }}">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.5 3.8 5.8 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.8-3.8-9s1.3-6.5 3.8-9z"></path></svg>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 20px">Evangelismo e Missões</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #555555; margin-top: 9px; text-wrap: pretty">Levando a mensagem da salvação em Cristo para Jaguapitã e para todas as nações.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #E2E0D9; padding: 36px 32px">
+        <div style="width: 46px; height: 46px; border: 1.5px solid {{ accent }}; display: flex; align-items: center; justify-content: center; color: {{ accent }}">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.3-9A5 5 0 0 1 12 6a5 5 0 0 1 9.3 6c-2.3 4.4-9.3 9-9.3 9z"></path><path d="M8 15l2-2 2 2 4-4"></path></svg>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 20px">Socorro</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #555555; margin-top: 9px; text-wrap: pretty">Assistência e cuidado prático para famílias em situação de necessidade.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #E2E0D9; padding: 36px 32px">
+        <div style="width: 46px; height: 46px; border: 1.5px solid {{ accent }}; display: flex; align-items: center; justify-content: center; color: {{ accent }}">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-5 4z"></path></svg>
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 19px; color: #1C1C1C; margin-top: 20px">Comunicação e Mídia</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #555555; margin-top: 9px; text-wrap: pretty">Comunicando a mensagem e as atividades da igreja com excelência e clareza.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="position: relative; background: #10182B; overflow: hidden">
+    <image-slot id="cta-photo" shape="rect" placeholder="Foto: pessoas servindo/voluntariando" style="position: absolute; inset: 0; width: 100%; height: 100%"></image-slot>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,15,29,0.92) 0%, rgba(8,12,24,0.9) 100%); pointer-events: none"></div>
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 104px 40px; display: flex; flex-direction: column; align-items: center; text-align: center">
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 38px; color: #fff">Quer saber mais ou fazer parte de um ministério?</div>
+      <div style="font-size: 17px; line-height: 1.8; color: rgba(255,255,255,0.84); margin-top: 22px; max-width: 700px; text-wrap: pretty">Fale com a nossa equipe e descubra como você pode servir e crescer em comunhão dentro de um dos nossos ministérios.</div>
+      <div style="display: flex; gap: 14px; margin-top: 38px">
+        <div style="background: #fff; color: #10182B; font-size: 15px; font-weight: 700; padding: 17px 32px">Fale Conosco</div>
+        <div style="border: 1.5px solid rgba(255,255,255,0.75); color: #fff; font-size: 15px; font-weight: 600; padding: 15.5px 32px">Planeje sua Visita</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #0D1424; color: #fff">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 40px 0">
+      <div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 60px">
+        <div>
+          <div style="display: flex; align-items: center; gap: 14px">
+            <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã" style="width: 38px; height: 38px; object-fit: contain; flex: none">
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; line-height: 1.3">Primeira Igreja Batista<br>de Jaguapitã</div>
+          </div>
+          <div style="font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.6); margin-top: 20px; max-width: 400px; text-wrap: pretty">Uma comunidade de cristãos reunidos para adorar a Deus, crescer na Palavra e anunciar o Evangelho de Jesus Cristo em Jaguapitã e além.</div>
+        </div>
+        <div>
+          <div style="font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700">Endereço</div>
+          <div style="font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.68); margin-top: 16px">R. Goiás, 160 - Centro,<br>Jaguapitã - PR, 86610-000</div>
+        </div>
+        <div>
+          <div style="font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700">Redes sociais</div>
+          <div style="display: flex; gap: 12px; margin-top: 16px">
+            <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.78)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none"></circle></svg>
+            </div>
+            <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.78)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9h2V6h-2c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14V9z"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 56px; border-top: 1px solid rgba(255,255,255,0.12); padding: 24px 0 30px; display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.48)">
+        <div>© 2026 Primeira Igreja Batista de Jaguapitã. Todos os direitos reservados.</div>
+        <div>Política de Privacidade</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;goldAccent&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Estilo&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const gold = this.props.goldAccent ?? true;
+    return {
+      accent: '#1E3E72',
+      accentGold: gold ? '#B8862E' : 'rgba(28,28,28,0.4)'
+    };
+  }
+}
+</script>
+</body>
+</html>

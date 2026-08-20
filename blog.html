@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog & Devocionais | PIB Jaguapitã</title>
+  <meta name="description" content="Artigos, devocionais e estudos bíblicos da Primeira Igreja Batista de Jaguapitã para edificação da sua vida espiritual.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="icon" type="image/png" href="./assets/logo-icon.png">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã">
+        <div class="brand-text">
+          <div class="brand-title">Primeira Igreja Batista</div>
+          <div class="brand-subtitle">de Jaguapitã</div>
+        </div>
+      </a>
+
+      <nav class="nav-desktop">
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Início</a>
+          <a href="nossa-historia.html" class="nav-link">Sobre</a>
+          <a href="ministerios.html" class="nav-link">Ministérios</a>
+          <a href="programacao.html" class="nav-link">Programação</a>
+          <a href="evangelho.html" class="nav-link">O Evangelho</a>
+          <a href="dizimos.html" class="nav-link">Dízimos</a>
+          <a href="blog.html" class="nav-link active">Blog</a>
+          <a href="fale-conosco.html" class="nav-link">Contato</a>
+          <a href="onde-estamos.html" class="nav-link">Localização</a>
+        </div>
+        <button class="btn-visit" data-modal="visit">Planeje sua Visita</button>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Abrir menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer">
+    <div class="drawer-header">
+      <div class="brand-title" style="font-size: 15px;">PIB Jaguapitã</div>
+      <button class="drawer-close" aria-label="Fechar menu">&times;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Início</a>
+      <a href="nossa-historia.html" class="mobile-nav-link">Sobre Nós</a>
+      <a href="ministerios.html" class="mobile-nav-link">Ministérios</a>
+      <a href="programacao.html" class="mobile-nav-link">Programação</a>
+      <a href="evangelho.html" class="mobile-nav-link">O Evangelho</a>
+      <a href="dizimos.html" class="mobile-nav-link">Dízimos e Ofertas</a>
+      <a href="blog.html" class="mobile-nav-link active">Blog</a>
+      <a href="fale-conosco.html" class="mobile-nav-link">Fale Conosco</a>
+      <a href="onde-estamos.html" class="mobile-nav-link">Onde Estamos</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Inner Banner with Real Photo from Melhores -->
+    <section class="inner-banner">
+      <img src="./assets/Fotos/Templo/Melhores/eb5a9a01-f66e-4537-acc0-fbec2baefd0f.png" alt="Blog PIB Jaguapitã" class="hero-bg-image">
+      <div class="hero-overlay"></div>
+      <div class="inner-banner-content">
+        <div class="breadcrumb">
+          <a href="index.html">Início</a> <span>/</span> <span style="color: #fff; font-weight: 600;">Blog & Devocionais</span>
+        </div>
+        <h1 class="page-title">Blog & Devocionais</h1>
+        <p class="page-subtitle">Reflexões, artigos bíblicos e estudos para abençoar o seu dia a dia.</p>
+      </div>
+    </section>
+
+    <!-- Search & Filters Section -->
+    <section class="section-padding" style="padding-bottom: 0;">
+      <div class="container-standard">
+        <div style="background: #fff; border: 1px solid var(--color-border-card); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+          
+          <!-- Search Input -->
+          <div style="position: relative; flex: 1; min-width: 280px;">
+            <input id="blog-search" type="text" placeholder="Buscar por palavra-chave..." style="width: 100%; padding: 12px 16px 12px 42px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); outline: none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--color-text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+
+          <!-- Category Filter -->
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 13.5px; font-weight: 600; color: var(--color-text-muted);">Categoria:</span>
+            <select id="blog-category" style="padding: 12px 16px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); outline: none; background: #fff; font-size: 14px; color: var(--color-text-main);">
+              <option value="todos">Todas as categorias</option>
+              <option value="devocional">Devocionais</option>
+              <option value="estudo">Estudos Bíblicos</option>
+              <option value="discipulado">Discipulado</option>
+              <option value="familia">Família</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="section-padding">
+      <div class="container-standard">
+        <div id="blog-posts-grid" class="grid-3">
+
+          <!-- Post 1 -->
+          <article class="feature-card blog-post-card" data-category="devocional" style="padding: 0; overflow: hidden; background: #fff;">
+            <img src="./assets/blog_oracao.jpg" alt="Vida de oração" style="width: 100%; height: 210px; object-fit: cover;">
+            <div style="padding: 28px;">
+              <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">12 AGO 2026 • DEVOCIONAL</div>
+              <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">Como crescer na vida de oração</h2>
+              <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">Descubra disciplinas práticas e espirituais para desenvolver uma vida de intimidade constante e profunda com Deus no seu dia a dia.</p>
+              <button class="btn-read-article" data-article="1" style="background: none; border: none; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; cursor: pointer; padding: 0;">Ler artigo completo →</button>
+            </div>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="feature-card blog-post-card" data-category="estudo" style="padding: 0; overflow: hidden; background: #fff;">
+            <img src="./assets/blog_ressurreicao.jpg" alt="A esperança da ressurreição" style="width: 100%; height: 210px; object-fit: cover;">
+            <div style="padding: 28px;">
+              <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">05 AGO 2026 • ESTUDO BÍBLICO</div>
+              <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">A esperança da ressurreição</h2>
+              <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">Como a vitória gloriosa de Cristo sobre a morte transforma nossas dores temporárias e nos garante a vida eterna.</p>
+              <button class="btn-read-article" data-article="2" style="background: none; border: none; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; cursor: pointer; padding: 0;">Ler artigo completo →</button>
+            </div>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="feature-card blog-post-card" data-category="familia" style="padding: 0; overflow: hidden; background: #fff;">
+            <img src="./assets/blog_familia.jpg" alt="Família cristã" style="width: 100%; height: 210px; object-fit: cover;">
+            <div style="padding: 28px;">
+              <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">28 JUL 2026 • FAMÍLIA</div>
+              <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">Cultivando um lar cristão saudável</h2>
+              <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">Princípios bíblicos essenciais para edificar um lar abençoado, guiado pela oração e pelo amor cristão em família.</p>
+              <button class="btn-read-article" data-article="3" style="background: none; border: none; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; cursor: pointer; padding: 0;">Ler artigo completo →</button>
+            </div>
+          </article>
+
+          <!-- Post 4 -->
+          <article class="feature-card blog-post-card" data-category="discipulado" style="padding: 0; overflow: hidden; background: #fff;">
+            <img src="./assets/hero_church_worship.jpg" alt="Seguir a Cristo" style="width: 100%; height: 210px; object-fit: cover;">
+            <div style="padding: 28px;">
+              <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">18 JUL 2026 • DISCIPULADO</div>
+              <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">O que significa seguir a Cristo?</h2>
+              <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">Reflexões bíblicas profundas sobre o custo do discipulado e a alegria inabalável de andar com o Senhor Jesus.</p>
+              <button class="btn-read-article" data-article="4" style="background: none; border: none; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; cursor: pointer; padding: 0;">Ler artigo completo →</button>
+            </div>
+          </article>
+
+          <!-- Post 5 -->
+          <article class="feature-card blog-post-card" data-category="estudo" style="padding: 0; overflow: hidden; background: #fff;">
+            <img src="./assets/Fotos/Templo/527572079_17863841322442439_6892293775101133619_n.jpg" alt="Culto de Batismo" style="width: 100%; height: 210px; object-fit: cover;">
+            <div style="padding: 28px;">
+              <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">10 JUL 2026 • ESTUDO BÍBLICO</div>
+              <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">O significado do Batismo nas águas</h2>
+              <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">Entenda o simbolismo bíblico da profissão pública de fé e da nova vida em Cristo Jesus.</p>
+              <button class="btn-read-article" data-article="5" style="background: none; border: none; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; cursor: pointer; padding: 0;">Ler artigo completo →</button>
+            </div>
+          </article>
+
+          <!-- Post 6 -->
+          <article class="feature-card blog-post-card" data-category="devocional" style="padding: 0; overflow: hidden; background: #fff;">
+            <img src="./assets/pastor_nilson.jpg" alt="Firmeza na fé" style="width: 100%; height: 210px; object-fit: cover;">
+            <div style="padding: 28px;">
+              <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">02 JUL 2026 • DEVOCIONAL</div>
+              <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">Firmeza em tempos de incerteza</h2>
+              <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">Como a soberania imutável de Deus guarda nosso coração e nossa mente em meio às tempestades da vida.</p>
+              <button class="btn-read-article" data-article="6" style="background: none; border: none; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; cursor: pointer; padding: 0;">Ler artigo completo →</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section with Real Photo -->
+    <section class="section-padding bg-dark" style="text-align: center; position: relative; overflow: hidden;">
+      <img src="./assets/Fotos/Templo/540659199_17867147337442439_8258682456361946682_n.jpg" alt="Comunhão PIB Jaguapitã" class="hero-bg-image">
+      <div class="hero-overlay"></div>
+      <div class="container-narrow" style="position: relative; z-index: 1;">
+        <h2 style="font-family: var(--font-heading); font-size: 36px; color: #fff;">Quer aprender mais com a comunidade?</h2>
+        <p style="font-size: 17px; line-height: 1.8; color: rgba(255, 255, 255, 0.85); margin-top: 20px;">
+          Participe da nossa Escola Bíblica Dominical aos domingos às 09h00. Há salas específicas para todas as faixas etárias!
+        </p>
+        <div style="margin-top: 32px;">
+          <a href="programacao.html" class="btn btn-white">Ver Programação Semanal</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Article Modal -->
+  <div id="article-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <button class="modal-close-btn" aria-label="Fechar">&times;</button>
+      <div class="modal-header">
+        <div id="article-modal-category" style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">DEVOCIONAL</div>
+        <h3 id="article-modal-title" class="modal-title" style="margin-top: 6px;">Título do Artigo</h3>
+      </div>
+      <div class="modal-body">
+        <img id="article-modal-img" src="" alt="Imagem do artigo" style="width: 100%; height: 240px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 20px;">
+        <div id="article-modal-text" style="font-size: 16px; line-height: 1.8; color: var(--color-text-body); display: flex; flex-direction: column; gap: 16px;">
+          <p>Conteúdo completo do artigo bíblico...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã" style="width: 38px; height: 38px;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3;">
+              Primeira Igreja Batista<br>de Jaguapitã
+            </div>
+          </div>
+          <p class="footer-desc">
+            Uma comunidade de cristãos reunidos para adorar a Deus, crescer na Palavra e anunciar o Evangelho de Jesus Cristo em Jaguapitã e além.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Endereço</div>
+          <div class="footer-address">
+            R. Goiás, 160 - Centro,<br>
+            Jaguapitã - PR, 86610-000
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Redes sociais</div>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Primeira Igreja Batista de Jaguapitã. Todos os direitos reservados.</div>
+        <div>Política de Privacidade</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Planeje sua Visita -->
+  <div id="visit-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <button class="modal-close-btn" aria-label="Fechar">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title">Planeje sua Visita</h3>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">Seu Nome Completo</label>
+              <input type="text" required placeholder="Digite seu nome" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm);">
+            </div>
+            <div>
+              <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">WhatsApp / Telefone</label>
+              <input type="tel" required placeholder="(43) 99999-9999" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm);">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Confirmar Visita</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>

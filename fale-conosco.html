@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fale Conosco & Pedidos de Oração | PIB Jaguapitã</title>
+  <meta name="description" content="Entre em contato com a Primeira Igreja Batista de Jaguapitã. Envie sua mensagem ou pedido de oração.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="icon" type="image/png" href="./assets/logo-icon.png">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã">
+        <div class="brand-text">
+          <div class="brand-title">Primeira Igreja Batista</div>
+          <div class="brand-subtitle">de Jaguapitã</div>
+        </div>
+      </a>
+
+      <nav class="nav-desktop">
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Início</a>
+          <a href="nossa-historia.html" class="nav-link">Sobre</a>
+          <a href="ministerios.html" class="nav-link">Ministérios</a>
+          <a href="programacao.html" class="nav-link">Programação</a>
+          <a href="evangelho.html" class="nav-link">O Evangelho</a>
+          <a href="dizimos.html" class="nav-link">Dízimos</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="fale-conosco.html" class="nav-link active">Contato</a>
+          <a href="onde-estamos.html" class="nav-link">Localização</a>
+        </div>
+        <button class="btn-visit" data-modal="visit">Planeje sua Visita</button>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Abrir menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer">
+    <div class="drawer-header">
+      <div class="brand-title" style="font-size: 15px;">PIB Jaguapitã</div>
+      <button class="drawer-close" aria-label="Fechar menu">&times;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Início</a>
+      <a href="nossa-historia.html" class="mobile-nav-link">Sobre Nós</a>
+      <a href="ministerios.html" class="mobile-nav-link">Ministérios</a>
+      <a href="programacao.html" class="mobile-nav-link">Programação</a>
+      <a href="evangelho.html" class="mobile-nav-link">O Evangelho</a>
+      <a href="dizimos.html" class="mobile-nav-link">Dízimos e Ofertas</a>
+      <a href="blog.html" class="mobile-nav-link">Blog</a>
+      <a href="fale-conosco.html" class="mobile-nav-link active">Fale Conosco</a>
+      <a href="onde-estamos.html" class="mobile-nav-link">Onde Estamos</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Inner Banner with Real Photo from Melhores -->
+    <section class="inner-banner">
+      <img src="./assets/Fotos/Templo/Melhores/eb5a9a01-f66e-4537-acc0-fbec2baefd0f.png" alt="Fale Conosco PIB Jaguapitã" class="hero-bg-image">
+      <div class="hero-overlay"></div>
+      <div class="inner-banner-content">
+        <div class="breadcrumb">
+          <a href="index.html">Início</a> <span>/</span> <span style="color: #fff; font-weight: 600;">Fale Conosco</span>
+        </div>
+        <h1 class="page-title">Fale Conosco</h1>
+        <p class="page-subtitle">Estamos à disposição para conversar, tirar dúvidas e orar com você.</p>
+      </div>
+    </section>
+
+    <!-- Contact Form & Details -->
+    <section class="section-padding">
+      <div class="container-standard">
+        <div class="grid-2" style="gap: 60px;">
+          
+          <!-- Contact Form -->
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--color-text-main);">Envie sua mensagem ou pedido de oração</h2>
+            <p style="font-size: 15.5px; color: var(--color-text-body); margin-top: 10px;">Preencha o formulário abaixo e nossa equipe pastoral responderá com muito carinho.</p>
+
+            <form id="contact-form" style="margin-top: 32px; display: flex; flex-direction: column; gap: 18px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                  <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">Nome *</label>
+                  <input type="text" required placeholder="Seu nome" style="width: 100%; padding: 13px 16px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); outline: none;">
+                </div>
+                <div>
+                  <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">Sobrenome</label>
+                  <input type="text" placeholder="Seu sobrenome" style="width: 100%; padding: 13px 16px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); outline: none;">
+                </div>
+              </div>
+
+              <div>
+                <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">E-mail *</label>
+                <input type="email" required placeholder="seuemail@exemplo.com" style="width: 100%; padding: 13px 16px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); outline: none;">
+              </div>
+
+              <div>
+                <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">WhatsApp / Telefone *</label>
+                <input type="tel" required placeholder="(43) 99999-9999" style="width: 100%; padding: 13px 16px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); outline: none;">
+              </div>
+
+              <div>
+                <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">Assunto</label>
+                <select style="width: 100%; padding: 13px 16px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); outline: none; background: #fff;">
+                  <option>Pedido de Oração</option>
+                  <option>Dúvida sobre os Cultos</option>
+                  <option>Informações sobre Ministérios</option>
+                  <option>Aconselhamento Pastoral</option>
+                  <option>Outro assunto</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">Sua Mensagem *</label>
+                <textarea rows="5" required placeholder="Escreva sua mensagem ou pedido de oração aqui..." style="width: 100%; padding: 13px 16px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); outline: none; resize: none;"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+                <span>Enviar mensagem</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Direct Channels -->
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--color-text-main);">Prefere falar diretamente conosco?</h2>
+            <p style="font-size: 15.5px; color: var(--color-text-body); margin-top: 10px;">Você também pode falar diretamente com a gente pelos nossos canais oficiais de comunicação:</p>
+
+            <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 24px;">
+              
+              <div style="display: flex; align-items: flex-start; gap: 16px;">
+                <div style="width: 44px; height: 44px; flex-shrink: 0; border: 1.5px solid var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </div>
+                <div>
+                  <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); font-weight: 700;">WhatsApp</div>
+                  <div style="font-size: 16px; color: var(--color-text-main); font-weight: 600; margin-top: 4px;">(43) 99999-1234</div>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: flex-start; gap: 16px;">
+                <div style="width: 44px; height: 44px; flex-shrink: 0; border: 1.5px solid var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); font-weight: 700;">Telefone da Igreja</div>
+                  <div style="font-size: 16px; color: var(--color-text-main); font-weight: 600; margin-top: 4px;">(43) 3272-1234</div>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: flex-start; gap: 16px;">
+                <div style="width: 44px; height: 44px; flex-shrink: 0; border: 1.5px solid var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div>
+                  <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); font-weight: 700;">E-mail</div>
+                  <div style="font-size: 16px; color: var(--color-text-main); font-weight: 600; margin-top: 4px;">contato@pibjaguapita.org.br</div>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: flex-start; gap: 16px;">
+                <div style="width: 44px; height: 44px; flex-shrink: 0; border: 1.5px solid var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div>
+                  <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); font-weight: 700;">Endereço</div>
+                  <div style="font-size: 15.5px; color: var(--color-text-main); font-weight: 600; margin-top: 4px; line-height: 1.5;">
+                    R. Goiás, 160 - Centro,<br>
+                    Jaguapitã - PR, 86610-000
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Verse Section -->
+    <section class="section-padding bg-alt">
+      <div class="container-narrow">
+        <div class="quote-box" style="margin: 0;">
+          <p class="quote-text" style="font-size: 21px;">
+            "Levai as cargas uns dos outros e, assim, cumprireis a lei de Cristo."
+          </p>
+          <div class="quote-author">Gálatas 6:2</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã" style="width: 38px; height: 38px;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3;">
+              Primeira Igreja Batista<br>de Jaguapitã
+            </div>
+          </div>
+          <p class="footer-desc">
+            Uma comunidade de cristãos reunidos para adorar a Deus, crescer na Palavra e anunciar o Evangelho de Jesus Cristo em Jaguapitã e além.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Endereço</div>
+          <div class="footer-address">
+            R. Goiás, 160 - Centro,<br>
+            Jaguapitã - PR, 86610-000
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Redes sociais</div>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Primeira Igreja Batista de Jaguapitã. Todos os direitos reservados.</div>
+        <div>Política de Privacidade</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Planeje sua Visita -->
+  <div id="visit-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <button class="modal-close-btn" aria-label="Fechar">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title">Planeje sua Visita</h3>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">Seu Nome Completo</label>
+              <input type="text" required placeholder="Digite seu nome" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm);">
+            </div>
+            <div>
+              <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">WhatsApp / Telefone</label>
+              <input type="tel" required placeholder="(43) 99999-9999" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm);">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Confirmar Visita</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>
