@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="seo-title">Artigo | Blog PIB Jaguapitã</title>
+  <meta id="seo-description" name="description" content="Artigo e estudo bíblico da Primeira Igreja Batista de Jaguapitã.">
+  
+  <!-- Open Graph / Social Media SEO -->
+  <meta id="og-title" property="og:title" content="Artigo | Blog PIB Jaguapitã">
+  <meta id="og-description" property="og:description" content="Leitura bíblica e edificação no blog da PIB Jaguapitã.">
+  <meta id="og-image" property="og:image" content="./assets/logo-icon.png">
+  <meta property="og:type" content="article">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="icon" type="image/png" href="./assets/logo-icon.png">
+
+  <style>
+    .article-body-content p {
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--color-text-body);
+      margin-bottom: 24px;
+    }
+    .article-body-content h3 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin: 36px 0 16px;
+    }
+    .article-body-content blockquote {
+      background: var(--color-bg-alt);
+      border-left: 4px solid var(--color-gold);
+      padding: 24px 28px;
+      border-radius: var(--radius-sm);
+      font-style: italic;
+      font-size: 19px;
+      color: var(--color-text-main);
+      margin: 32px 0;
+    }
+    .article-body-content ul {
+      margin: 20px 0 28px 24px;
+      font-size: 17.5px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+    }
+    .article-body-content li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã">
+        <div class="brand-text">
+          <div class="brand-title">Primeira Igreja Batista</div>
+          <div class="brand-subtitle">de Jaguapitã</div>
+        </div>
+      </a>
+
+      <nav class="nav-desktop">
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Início</a>
+          <a href="nossa-historia.html" class="nav-link">Sobre</a>
+          <a href="ministerios.html" class="nav-link">Ministérios</a>
+          <a href="programacao.html" class="nav-link">Programação</a>
+          <a href="evangelho.html" class="nav-link">O Evangelho</a>
+          <a href="dizimos.html" class="nav-link">Dízimos</a>
+          <a href="blog.html" class="nav-link active">Blog</a>
+          <a href="fale-conosco.html" class="nav-link">Contato</a>
+          <a href="onde-estamos.html" class="nav-link">Localização</a>
+        </div>
+        <button class="btn-visit" data-modal="visit">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <span>Planeje sua Visita</span>
+        </button>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Abrir menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer">
+    <div class="drawer-header">
+      <div class="brand-title" style="font-size: 15px;">PIB Jaguapitã</div>
+      <button class="drawer-close" aria-label="Fechar menu">&times;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Início</a>
+      <a href="nossa-historia.html" class="mobile-nav-link">Sobre Nós</a>
+      <a href="ministerios.html" class="mobile-nav-link">Ministérios</a>
+      <a href="programacao.html" class="mobile-nav-link">Programação</a>
+      <a href="evangelho.html" class="mobile-nav-link">O Evangelho</a>
+      <a href="dizimos.html" class="mobile-nav-link">Dízimos e Ofertas</a>
+      <a href="blog.html" class="mobile-nav-link active">Blog</a>
+      <a href="fale-conosco.html" class="mobile-nav-link">Fale Conosco</a>
+      <a href="onde-estamos.html" class="mobile-nav-link">Onde Estamos</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main style="padding-bottom: 96px;">
+    
+    <!-- Header Hero Banner with Cover Photo -->
+    <section class="inner-banner" style="min-height: 380px;">
+      <img id="article-cover-bg" src="./assets/blog_oracao.jpg" alt="Capa do Artigo" class="hero-bg-image">
+      <div class="hero-overlay"></div>
+      <div class="inner-banner-content" style="max-width: 860px;">
+        <div class="breadcrumb" style="margin-bottom: 16px;">
+          <a href="index.html">Início</a> <span>/</span> <a href="blog.html">Blog</a> <span>/</span> <span id="article-breadcrumb-cat" style="color: #fff; font-weight: 600;">Artigo</span>
+        </div>
+        <div id="article-meta-badge" style="font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-gold); font-weight: 700; margin-bottom: 12px;">12 AGO 2026 • DEVOCIONAL</div>
+        <h1 id="article-main-title" class="page-title" style="font-size: 40px; line-height: 1.25;">Carregando artigo...</h1>
+        <div style="display: flex; align-items: center; gap: 14px; margin-top: 20px; color: rgba(255,255,255,0.85); font-size: 14px;">
+          <span>✍️ Por Equipe Pastoral PIB Jaguapitã</span>
+          <span>•</span>
+          <span id="article-read-time">📖 3 min de leitura</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content Section -->
+    <section style="margin-top: 60px;">
+      <div class="container-narrow">
+        
+        <!-- Summary Box -->
+        <div id="article-summary-card" style="background: var(--color-bg-alt); border-left: 4px solid var(--color-primary); padding: 28px; border-radius: var(--radius-sm); margin-bottom: 40px;">
+          <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">Neste Artigo</h3>
+          <p id="article-summary-text" style="font-size: 16.5px; line-height: 1.7; color: var(--color-text-main); font-weight: 500;"></p>
+        </div>
+
+        <!-- Main Body Text -->
+        <article id="article-body-text" class="article-body-content">
+          <!-- Dynamic HTML content -->
+        </article>
+
+        <!-- Social Share Bar -->
+        <div style="margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <a href="blog.html" class="btn btn-outline" style="padding: 10px 20px;">
+            ← Voltar para o Blog
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 14px; font-weight: 600; color: var(--color-text-muted);">Compartilhar:</span>
+            <button id="btn-share-whatsapp" class="btn-icon-action" title="Compartilhar no WhatsApp" style="width: 38px; height: 38px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </button>
+            <button id="btn-share-copy" class="btn-icon-action" title="Copiar Link" style="width: 38px; height: 38px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Related Articles Section -->
+    <section class="section-padding bg-alt" style="margin-top: 80px;">
+      <div class="container-standard">
+        <div class="section-header-center">
+          <div class="section-tag">Continue Lendo</div>
+          <h2 class="section-title">Outras Publicações Relevantes</h2>
+        </div>
+
+        <div id="related-articles-grid" class="grid-3">
+          <!-- Dynamic Related Articles -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="./assets/logo-icon.png" alt="Logo PIB Jaguapitã" style="width: 38px; height: 38px;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3;">
+              Primeira Igreja Batista<br>de Jaguapitã
+            </div>
+          </div>
+          <p class="footer-desc">
+            Uma comunidade de cristãos reunidos para adorar a Deus, crescer na Palavra e anunciar o Evangelho de Jesus Cristo em Jaguapitã e além.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Endereço</div>
+          <div class="footer-address" data-bind="address">
+            R. Goiás, 160 - Centro,<br>
+            Jaguapitã - PR, 86610-000
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Redes sociais</div>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Primeira Igreja Batista de Jaguapitã. Todos os direitos reservados.</div>
+        <div><a href="admin.html" style="color: rgba(255,255,255,0.48); text-decoration: underline;">Painel Admin</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Planeje sua Visita -->
+  <div id="visit-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <button class="modal-close-btn" aria-label="Fechar">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title">Planeje sua Visita</h3>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">Seu Nome Completo</label>
+              <input type="text" required placeholder="Digite seu nome" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm);">
+            </div>
+            <div>
+              <label style="font-size: 13.5px; font-weight: 600; color: var(--color-text-main); display: block; margin-bottom: 6px;">WhatsApp / Telefone</label>
+              <input type="tel" required placeholder="(43) 99999-9999" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm);">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span>Confirmar Visita</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/store.js"></script>
+  <script src="./js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get URL params
+      const urlParams = new URLSearchParams(window.location.search);
+      const articleId = urlParams.get('id') || "1";
+
+      const post = PIBStore ? PIBStore.getBlogPostById(articleId) : null;
+      if (!post) {
+        document.getElementById('article-main-title').textContent = "Artigo não encontrado";
+        document.getElementById('article-summary-card').style.display = "none";
+        return;
+      }
+
+      // Dynamic SEO Hydration
+      const pageTitle = `${post.title} | Blog PIB Jaguapitã`;
+      document.title = pageTitle;
+      document.getElementById('seo-title').textContent = pageTitle;
+      document.getElementById('seo-description').setAttribute('content', post.summary);
+      document.getElementById('og-title').setAttribute('content', pageTitle);
+      document.getElementById('og-description').setAttribute('content', post.summary);
+      document.getElementById('og-image').setAttribute('content', post.image);
+
+      // Hydrate Page View
+      document.getElementById('article-cover-bg').src = post.image;
+      document.getElementById('article-breadcrumb-cat').textContent = post.categoryLabel || post.category.toUpperCase();
+      document.getElementById('article-meta-badge').textContent = `${post.date} • ${(post.categoryLabel || post.category).toUpperCase()}`;
+      document.getElementById('article-main-title').textContent = post.title;
+      document.getElementById('article-summary-text').textContent = post.summary;
+
+      // Render content (HTML formatted or text)
+      let formattedContent = post.content;
+      if (!formattedContent.includes('<p>')) {
+        formattedContent = formattedContent.split('\n\n').map(para => `<p>${para}</p>`).join('');
+      }
+      document.getElementById('article-body-text').innerHTML = formattedContent;
+
+      // Estimate Reading Time
+      const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
+      const readMinutes = Math.max(1, Math.ceil(wordCount / 200));
+      document.getElementById('article-read-time').textContent = `📖 ${readMinutes} min de leitura`;
+
+      // Share Buttons
+      document.getElementById('btn-share-whatsapp').onclick = () => {
+        const text = encodeURIComponent(`Confira este artigo no site da PIB Jaguapitã: ${post.title} - ${window.location.href}`);
+        window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+      };
+
+      document.getElementById('btn-share-copy').onclick = () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          showToast('✓ Link do artigo copiado para a área de transferência!');
+        });
+      };
+
+      // Related Articles Grid
+      const allPosts = PIBStore.getBlogPosts().filter(p => p.id !== post.id).slice(0, 3);
+      const relatedGrid = document.getElementById('related-articles-grid');
+      if (relatedGrid && allPosts.length > 0) {
+        relatedGrid.innerHTML = allPosts.map(rel => `
+          <div class="feature-card" style="padding: 0; overflow: hidden; background: #fff;">
+            <img src="${rel.image}" alt="${rel.title}" style="width: 100%; height: 180px; object-fit: cover;">
+            <div style="padding: 24px;">
+              <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">${rel.date} • ${(rel.categoryLabel || rel.category).toUpperCase()}</div>
+              <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin-top: 8px; color: var(--color-text-main);">${rel.title}</h3>
+              <p style="font-size: 13.5px; color: var(--color-text-body); margin-top: 8px; line-height: 1.6;">${rel.summary}</p>
+              <a href="artigo.html?id=${rel.id}" style="display: inline-block; font-size: 13.5px; font-weight: 700; color: var(--color-primary); margin-top: 16px;">Ler artigo completo →</a>
+            </div>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>

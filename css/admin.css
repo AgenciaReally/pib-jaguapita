@@ -391,35 +391,168 @@ body.admin-body {
   border-color: var(--admin-danger);
 }
 
-/* Modal Styling */
-.admin-modal-backdrop {
+/* ==========================================================================
+   FULLSCREEN 80/20 ADVANCED EDITOR LAYOUT
+   ========================================================================== */
+.editor-fullscreen-wrapper {
   position: fixed;
   inset: 0;
-  background: rgba(16, 24, 43, 0.7);
-  backdrop-filter: blur(4px);
-  z-index: 9999;
+  background: #F8FAFC;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-header {
+  height: 64px;
+  background: #fff;
+  border-bottom: 1px solid var(--admin-border);
+  padding: 0 28px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  padding: 20px;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
 
-.admin-modal-backdrop.active {
-  opacity: 1;
-  pointer-events: auto;
+.editor-split-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
 }
 
-.admin-modal-card {
-  background: #fff;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 680px;
-  max-height: 90vh;
+/* Left Main Content Column (~78%) */
+.editor-main-col {
+  flex: 1;
+  padding: 40px 48px;
   overflow-y: auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-title-input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--admin-text);
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px 0;
+  margin-bottom: 24px;
+  background: transparent;
+}
+
+.editor-title-input::placeholder {
+  color: #CBD5E1;
+}
+
+/* Formatting Toolbar */
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #F1F5F9;
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tool-btn {
+  background: #fff;
+  border: 1px solid var(--admin-border);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--admin-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tool-btn:hover {
+  background: var(--admin-primary);
+  color: #fff;
+  border-color: var(--admin-primary);
+}
+
+.editor-content-area {
+  flex: 1;
+  min-height: 380px;
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  padding: 24px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--admin-text);
+  outline: none;
+  background: #fff;
+  overflow-y: auto;
+}
+
+.editor-content-area:empty::before {
+  content: "Comece a escrever seu estudo ou artigo bíblico aqui...";
+  color: #94A3B8;
+}
+
+/* Right Settings Sidebar Column (~22%) */
+.editor-sidebar-col {
+  width: 320px;
+  background: #F8FAFC;
+  border-left: 1px solid var(--admin-border);
+  padding: 28px 24px;
+  overflow-y: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar-box-card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--admin-border);
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar-box-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--admin-text);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cover-upload-area {
+  border: 2px dashed var(--admin-border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #F8FAFC;
+}
+
+.cover-upload-area:hover {
+  border-color: var(--admin-primary);
+  background: rgba(30, 62, 114, 0.03);
+}
+
+.cover-preview-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
 /* Buttons */
@@ -446,17 +579,13 @@ body.admin-body {
   transform: translateY(-1px);
 }
 
-@media (max-width: 900px) {
-  .admin-layout {
+@media (max-width: 1024px) {
+  .editor-split-body {
     flex-direction: column;
   }
-  .admin-sidebar {
+  .editor-sidebar-col {
     width: 100%;
-  }
-  .stats-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .form-grid-2 {
-    grid-template-columns: 1fr;
+    border-left: none;
+    border-top: 1px solid var(--admin-border);
   }
 }

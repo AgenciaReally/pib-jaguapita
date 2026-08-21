@@ -104,18 +104,19 @@ function renderDynamicBlogPosts() {
 
   blogGrid.innerHTML = posts.map(post => `
     <article class="feature-card blog-post-card" data-category="${post.category}" style="padding: 0; overflow: hidden; background: #fff;">
-      <img src="${post.image}" alt="${post.title}" style="width: 100%; height: 210px; object-fit: cover;">
+      <a href="artigo.html?id=${post.id}">
+        <img src="${post.image}" alt="${post.title}" style="width: 100%; height: 210px; object-fit: cover;">
+      </a>
       <div style="padding: 28px;">
         <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">${post.date} • ${(post.categoryLabel || post.category).toUpperCase()}</div>
-        <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">${post.title}</h2>
+        <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">
+          <a href="artigo.html?id=${post.id}" style="color: var(--color-text-main); text-decoration: none;">${post.title}</a>
+        </h2>
         <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">${post.summary}</p>
-        <button class="btn-read-article" data-article="${post.id}" style="background: none; border: none; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; cursor: pointer; padding: 0;">Ler artigo completo →</button>
+        <a href="artigo.html?id=${post.id}" style="display: inline-block; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; text-decoration: none;">Ler artigo completo →</a>
       </div>
     </article>
   `).join('');
-
-  // Re-bind article modal triggers
-  bindArticleModals();
 }
 
 /* ==========================================================================
@@ -147,7 +148,7 @@ function initMobileDrawer() {
 }
 
 /* ==========================================================================
-   3. Modal System (Visit & Blog Reader)
+   3. Modal System (Visit)
    ========================================================================== */
 function initModals() {
   const visitModal = document.getElementById('visit-modal');
@@ -187,56 +188,6 @@ function initModals() {
       });
     }
   }
-
-  bindArticleModals();
-}
-
-function bindArticleModals() {
-  const articleModal = document.getElementById('article-modal');
-  const readBtns = document.querySelectorAll('.btn-read-article');
-
-  if (!articleModal || readBtns.length === 0) return;
-
-  const modalTitle = document.getElementById('article-modal-title');
-  const modalCategory = document.getElementById('article-modal-category');
-  const modalImg = document.getElementById('article-modal-img');
-  const modalText = document.getElementById('article-modal-text');
-  const closeBtn = articleModal.querySelector('.modal-close-btn');
-
-  readBtns.forEach(btn => {
-    btn.onclick = () => {
-      const articleId = btn.getAttribute('data-article');
-      const post = window.PIBStore ? window.PIBStore.getBlogPostById(articleId) : null;
-
-      if (post) {
-        if (modalTitle) modalTitle.textContent = post.title;
-        if (modalCategory) modalCategory.textContent = `${post.date} • ${(post.categoryLabel || post.category).toUpperCase()}`;
-        if (modalImg) modalImg.src = post.image;
-        if (modalText) {
-          modalText.innerHTML = `
-            <p style="font-weight: 600; color: var(--color-primary);">${post.summary}</p>
-            <p style="margin-top: 12px; line-height: 1.8;">${post.content}</p>
-          `;
-        }
-        articleModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    };
-  });
-
-  if (closeBtn) {
-    closeBtn.onclick = () => {
-      articleModal.classList.remove('active');
-      document.body.style.overflow = '';
-    };
-  }
-
-  articleModal.onclick = (e) => {
-    if (e.target === articleModal) {
-      articleModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  };
 }
 
 /* ==========================================================================

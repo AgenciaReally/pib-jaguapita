@@ -170,7 +170,7 @@
             <div style="display: flex; gap: 14px; flex-wrap: wrap;">
               <button class="btn-admin btn-admin-primary" onclick="switchTab('tab-contact')">⚙️ Editar Informações de Contato</button>
               <button class="btn-admin btn-admin-primary" onclick="switchTab('tab-giving')">💰 Alterar Chave PIX e Banco</button>
-              <button class="btn-admin btn-admin-primary" onclick="openNewArticleModal()">✍️ Publicar Novo Artigo no Blog</button>
+              <button class="btn-admin btn-admin-primary" onclick="openFullscreenEditor()">✍️ Publicar Novo Artigo no Blog</button>
             </div>
           </div>
         </div>
@@ -289,17 +289,17 @@
           </div>
         </div>
 
-        <!-- TAB 6: GESTÃO DO BLOG (CRUD COMPLETO) -->
+        <!-- TAB 6: GESTÃO DO BLOG -->
         <div id="tab-blog" class="tab-panel">
           <div class="admin-table-wrapper">
             <div class="admin-table-header">
               <div>
                 <h3 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--admin-text);">Artigos do Blog</h3>
-                <p style="font-size: 13px; color: var(--admin-muted); margin-top: 2px;">Gerencie, edite ou crie novos conteúdos para o blog da igreja.</p>
+                <p style="font-size: 13px; color: var(--admin-muted); margin-top: 2px;">Gerencie, edite ou crie novos conteúdos com o editor em tela cheia.</p>
               </div>
-              <button class="btn-admin btn-admin-primary" onclick="openNewArticleModal()">
+              <button class="btn-admin btn-admin-primary" onclick="openFullscreenEditor()">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                <span>Novo Artigo</span>
+                <span>Criar Novo Artigo</span>
               </button>
             </div>
 
@@ -325,59 +325,112 @@
   </div>
 
   <!-- ==========================================================================
-       3. MODAL DE EDIÇÃO E CRIAÇÃO DE ARTIGOS
+       3. FULLSCREEN 80/20 ADVANCED ARTICLE EDITOR VIEW
        ========================================================================== -->
-  <div id="article-crud-modal" class="admin-modal-backdrop">
-    <div class="admin-modal-card">
-      <div style="padding: 24px 28px; border-bottom: 1px solid var(--admin-border); display: flex; justify-content: space-between; align-items: center;">
-        <h3 id="crud-modal-title" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: var(--admin-text);">Publicar Novo Artigo</h3>
-        <button id="crud-modal-close" style="background: none; border: none; font-size: 24px; color: var(--admin-muted); cursor: pointer;">&times;</button>
+  <div id="editor-fullscreen-view" class="editor-fullscreen-wrapper" style="display: none;">
+    
+    <!-- Topbar Header -->
+    <header class="editor-header">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button id="btn-editor-back" class="btn-admin" style="background: rgba(30, 62, 114, 0.08); color: var(--admin-primary); padding: 8px 16px;">
+          ← Voltar para o Painel
+        </button>
+        <span style="display: inline-block; width: 1px; height: 24px; background: var(--admin-border);"></span>
+        <span id="editor-header-mode" style="font-size: 14px; font-weight: 700; color: var(--admin-text);">Editando Artigo</span>
       </div>
 
-      <form id="form-article-crud" style="padding: 28px;">
-        <input type="hidden" id="crud-article-id">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button id="btn-save-article" class="btn-admin btn-admin-primary" style="padding: 9px 24px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+          <span>Salvar e Publicar</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Split Screen 80/20 Body -->
+    <div class="editor-split-body">
+      
+      <!-- Left Column: Content Editor (~78%) -->
+      <main class="editor-main-col">
+        <input type="hidden" id="editor-article-id">
         
-        <div class="form-group">
-          <label>Título do Artigo *</label>
-          <input type="text" id="crud-title" class="form-control" placeholder="Ex: O Poder da Oração em Família" required>
+        <!-- Large Title Input -->
+        <input type="text" id="editor-title" class="editor-title-input" placeholder="Digite o Título do Artigo aqui..." required>
+
+        <!-- Formatting Toolbar -->
+        <div class="editor-toolbar">
+          <button type="button" class="tool-btn" onclick="execCmd('bold')" title="Negrito"><b>B</b> Negrito</button>
+          <button type="button" class="tool-btn" onclick="execCmd('italic')" title="Itálico"><i>I</i> Itálico</button>
+          <button type="button" class="tool-btn" onclick="execCmd('formatBlock', '<h3>')" title="Subtítulo">H3 Subtítulo</button>
+          <button type="button" class="tool-btn" onclick="execCmd('formatBlock', '<blockquote>')" title="Citação">“ Citação</button>
+          <button type="button" class="tool-btn" onclick="execCmd('insertUnorderedList')" title="Lista">• Lista</button>
+          <button type="button" class="tool-btn" onclick="insertLink()" title="Inserir Link">🔗 Link</button>
+          <button type="button" class="tool-btn" onclick="execCmd('removeFormat')" title="Limpar Formatação">🧹 Limpar</button>
         </div>
 
-        <div class="form-grid-2">
+        <!-- Rich Text Editable Content Area -->
+        <div id="editor-content-body" class="editor-content-area" contenteditable="true"></div>
+      </main>
+
+      <!-- Right Column: Settings Sidebar (~22%) -->
+      <aside class="editor-sidebar-col">
+        
+        <!-- Cover Image Settings Box -->
+        <div class="sidebar-box-card">
+          <div class="sidebar-box-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span>Foto de Capa do Artigo</span>
+          </div>
+          
+          <img id="cover-preview-img" src="./assets/blog_oracao.jpg" alt="Prévia da Capa" class="cover-preview-img">
+          
+          <label class="cover-upload-area" for="cover-file-input">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--admin-primary); margin-bottom: 4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <div style="font-size: 13px; font-weight: 700; color: var(--admin-primary);">Fazer Upload da Imagem</div>
+            <div style="font-size: 11px; color: var(--admin-muted); margin-top: 2px;">PNG, JPG ou WEBP do computador</div>
+          </label>
+          <input type="file" id="cover-file-input" accept="image/*" style="display: none;">
+
+          <div style="margin-top: 14px;">
+            <label style="font-size: 12px; font-weight: 600; color: var(--admin-muted); display: block; margin-bottom: 4px;">Ou Cole o Link / URL da Imagem:</label>
+            <input type="text" id="editor-image-url" class="form-control" style="font-size: 12.5px;" placeholder="./assets/blog_oracao.jpg">
+          </div>
+        </div>
+
+        <!-- Short Summary Box -->
+        <div class="sidebar-box-card">
+          <div class="sidebar-box-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line></svg>
+            <span>Resumo Curto (SEO)</span>
+          </div>
+          <textarea id="editor-summary" class="form-control" rows="3" placeholder="Escreva uma breve síntese para aparecer nos cartões e buscas..." required></textarea>
+        </div>
+
+        <!-- Metadata Box -->
+        <div class="sidebar-box-card">
+          <div class="sidebar-box-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+            <span>Categoria & Data</span>
+          </div>
+
           <div class="form-group">
-            <label>Categoria *</label>
-            <select id="crud-category" class="form-control" required>
+            <label style="font-size: 12.5px;">Categoria</label>
+            <select id="editor-category" class="form-control">
               <option value="devocional">Devocional</option>
               <option value="estudo">Estudo Bíblico</option>
               <option value="familia">Família</option>
               <option value="discipulado">Discipulado</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Data de Publicação</label>
-            <input type="text" id="crud-date" class="form-control" placeholder="Ex: 20 AGO 2026">
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label style="font-size: 12.5px;">Data de Publicação</label>
+            <input type="text" id="editor-date" class="form-control" placeholder="Ex: 20 AGO 2026">
           </div>
         </div>
 
-        <div class="form-group">
-          <label>Caminho / URL da Imagem de Capa *</label>
-          <input type="text" id="crud-image" class="form-control" placeholder="./assets/blog_oracao.jpg" required>
-        </div>
+      </aside>
 
-        <div class="form-group">
-          <label>Resumo Curto (Exibido nos cartões) *</label>
-          <textarea id="crud-summary" class="form-control" rows="2" placeholder="Pequena síntese do tema..." required></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>Conteúdo Completo do Artigo *</label>
-          <textarea id="crud-content" class="form-control" rows="6" placeholder="Escreva o texto completo do estudo ou devocional..." required></textarea>
-        </div>
-
-        <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
-          <button type="button" id="crud-modal-cancel" class="btn-admin" style="background: var(--admin-border); color: var(--admin-text);">Cancelar</button>
-          <button type="submit" class="btn-admin btn-admin-primary">Salvar Artigo</button>
-        </div>
-      </form>
     </div>
   </div>
 
@@ -473,49 +526,131 @@
         showToast('✓ Configurações do Google Maps salvas com sucesso!');
       });
 
-      // 10. CRUD Blog Modal Handlers
-      const crudModal = document.getElementById('article-crud-modal');
-      const closeCrudModal = () => crudModal.classList.remove('active');
-      document.getElementById('crud-modal-close').onclick = closeCrudModal;
-      document.getElementById('crud-modal-cancel').onclick = closeCrudModal;
-
-      document.getElementById('form-article-crud').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const id = document.getElementById('crud-article-id').value;
-        const postData = {
-          title: document.getElementById('crud-title').value,
-          category: document.getElementById('crud-category').value,
-          date: document.getElementById('crud-date').value || new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase(),
-          image: document.getElementById('crud-image').value,
-          summary: document.getElementById('crud-summary').value,
-          content: document.getElementById('crud-content').value
-        };
-
-        if (id) {
-          PIBStore.updateBlogPost(id, postData);
-          showToast('✓ Artigo atualizado com sucesso!');
-        } else {
-          PIBStore.addBlogPost(postData);
-          showToast('✓ Novo artigo publicado no blog com sucesso!');
+      // 10. Editor Cover Image File Upload Handler (FileReader base64 DataURL)
+      const fileInput = document.getElementById('cover-file-input');
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const dataUrl = event.target.result;
+            document.getElementById('cover-preview-img').src = dataUrl;
+            document.getElementById('editor-image-url').value = dataUrl;
+            showToast('✓ Foto de capa carregada!');
+          };
+          reader.readAsDataURL(file);
         }
-
-        closeCrudModal();
-        renderAdminBlogTable();
-        updateOverviewStats();
       });
+
+      document.getElementById('editor-image-url').addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        if (val) {
+          document.getElementById('cover-preview-img').src = val;
+        }
+      });
+
+      // 11. Save & Publish Article Handler
+      document.getElementById('btn-save-article').onclick = saveArticle;
+      document.getElementById('btn-editor-back').onclick = closeFullscreenEditor;
     });
+
+    /* Rich Text Formatting Exec commands */
+    function execCmd(command, value = null) {
+      document.execCommand(command, false, value);
+    }
+
+    function insertLink() {
+      const url = prompt('Digite a URL do link:');
+      if (url) {
+        document.execCommand('createLink', false, url);
+      }
+    }
 
     /* View Switchers */
     function showLogin() {
       document.getElementById('login-view').style.display = 'flex';
       document.getElementById('dashboard-view').style.display = 'none';
+      document.getElementById('editor-fullscreen-view').style.display = 'none';
     }
 
     function showDashboard() {
       document.getElementById('login-view').style.display = 'none';
       document.getElementById('dashboard-view').style.display = 'flex';
+      document.getElementById('editor-fullscreen-view').style.display = 'none';
       renderAdminBlogTable();
       updateOverviewStats();
+    }
+
+    function openFullscreenEditor(id = null) {
+      document.getElementById('dashboard-view').style.display = 'none';
+      document.getElementById('editor-fullscreen-view').style.display = 'flex';
+
+      if (id) {
+        const post = PIBStore.getBlogPostById(id);
+        if (post) {
+          document.getElementById('editor-header-mode').textContent = 'Editar Artigo';
+          document.getElementById('editor-article-id').value = post.id;
+          document.getElementById('editor-title').value = post.title;
+          document.getElementById('editor-content-body').innerHTML = post.content;
+          document.getElementById('editor-summary').value = post.summary;
+          document.getElementById('editor-category').value = post.category;
+          document.getElementById('editor-date').value = post.date;
+          document.getElementById('editor-image-url').value = post.image;
+          document.getElementById('cover-preview-img').src = post.image;
+        }
+      } else {
+        document.getElementById('editor-header-mode').textContent = 'Novo Artigo';
+        document.getElementById('editor-article-id').value = '';
+        document.getElementById('editor-title').value = '';
+        document.getElementById('editor-content-body').innerHTML = '';
+        document.getElementById('editor-summary').value = '';
+        document.getElementById('editor-category').value = 'devocional';
+        document.getElementById('editor-date').value = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+        document.getElementById('editor-image-url').value = './assets/blog_oracao.jpg';
+        document.getElementById('cover-preview-img').src = './assets/blog_oracao.jpg';
+      }
+    }
+
+    function closeFullscreenEditor() {
+      document.getElementById('editor-fullscreen-view').style.display = 'none';
+      document.getElementById('dashboard-view').style.display = 'flex';
+      renderAdminBlogTable();
+      updateOverviewStats();
+    }
+
+    function saveArticle() {
+      const title = document.getElementById('editor-title').value.trim();
+      const content = document.getElementById('editor-content-body').innerHTML.trim();
+      const summary = document.getElementById('editor-summary').value.trim();
+
+      if (!title) {
+        alert('Por favor, informe o título do artigo!');
+        return;
+      }
+      if (!summary) {
+        alert('Por favor, escreva um resumo curto para o artigo!');
+        return;
+      }
+
+      const id = document.getElementById('editor-article-id').value;
+      const postData = {
+        title: title,
+        category: document.getElementById('editor-category').value,
+        date: document.getElementById('editor-date').value || new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase(),
+        image: document.getElementById('editor-image-url').value || './assets/blog_oracao.jpg',
+        summary: summary,
+        content: content || `<p>${summary}</p>`
+      };
+
+      if (id) {
+        PIBStore.updateBlogPost(id, postData);
+        showToast('✓ Artigo atualizado e publicado com sucesso!');
+      } else {
+        PIBStore.addBlogPost(postData);
+        showToast('✓ Novo artigo publicado com sucesso no site!');
+      }
+
+      closeFullscreenEditor();
     }
 
     function switchTab(tabId) {
@@ -583,7 +718,7 @@
           <td style="color: var(--admin-muted); font-size: 13px;">${post.date}</td>
           <td style="text-align: right;">
             <div class="table-actions" style="justify-content: flex-end;">
-              <button class="btn-icon-action" onclick="openEditArticleModal('${post.id}')" title="Editar Artigo">
+              <button class="btn-icon-action" onclick="openFullscreenEditor('${post.id}')" title="Editar Artigo no Editor Avançado">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
               </button>
               <button class="btn-icon-action danger" onclick="deleteArticle('${post.id}')" title="Excluir Artigo">
@@ -598,35 +733,6 @@
     function updateOverviewStats() {
       const posts = PIBStore.getBlogPosts();
       document.getElementById('stat-articles-count').textContent = posts.length;
-    }
-
-    function openNewArticleModal() {
-      document.getElementById('crud-modal-title').textContent = 'Publicar Novo Artigo';
-      document.getElementById('crud-article-id').value = '';
-      document.getElementById('crud-title').value = '';
-      document.getElementById('crud-category').value = 'devocional';
-      document.getElementById('crud-date').value = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
-      document.getElementById('crud-image').value = './assets/blog_oracao.jpg';
-      document.getElementById('crud-summary').value = '';
-      document.getElementById('crud-content').value = '';
-
-      document.getElementById('article-crud-modal').classList.add('active');
-    }
-
-    function openEditArticleModal(id) {
-      const post = PIBStore.getBlogPostById(id);
-      if (!post) return;
-
-      document.getElementById('crud-modal-title').textContent = 'Editar Artigo';
-      document.getElementById('crud-article-id').value = post.id;
-      document.getElementById('crud-title').value = post.title;
-      document.getElementById('crud-category').value = post.category;
-      document.getElementById('crud-date').value = post.date;
-      document.getElementById('crud-image').value = post.image;
-      document.getElementById('crud-summary').value = post.summary;
-      document.getElementById('crud-content').value = post.content;
-
-      document.getElementById('article-crud-modal').classList.add('active');
     }
 
     function deleteArticle(id) {
