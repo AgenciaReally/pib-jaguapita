@@ -58,9 +58,21 @@ function initSiteHydration() {
     if (el.tagName === 'A') el.href = `mailto:${settings.email}`;
   });
 
-  // 4. Endereço
+  // 4. Endereço Limpo (Máximo 2 linhas lógicas)
   document.querySelectorAll('[data-bind="address"]').forEach(el => {
-    el.innerHTML = settings.address.replace(/,\s*/g, '<br>');
+    if (!settings.address) return;
+    if (settings.address.includes('<br>')) {
+      el.innerHTML = settings.address;
+    } else {
+      const parts = settings.address.split(',').map(s => s.trim());
+      if (parts.length >= 3) {
+        const line1 = parts.slice(0, 2).join(', ');
+        const line2 = parts.slice(2).join(', ');
+        el.innerHTML = `${line1}<br>${line2}`;
+      } else {
+        el.innerHTML = settings.address;
+      }
+    }
   });
 
   // 5. Dados de Dízimo / PIX
@@ -102,21 +114,26 @@ function renderDynamicBlogPosts() {
     return;
   }
 
-  blogGrid.innerHTML = posts.map(post => `
-    <article class="feature-card blog-post-card" data-category="${post.category}" style="padding: 0; overflow: hidden; background: #fff;">
-      <a href="artigo?id=${post.id}">
-        <img src="${post.image}" alt="${post.title}" style="width: 100%; height: 210px; object-fit: cover;">
-      </a>
-      <div style="padding: 28px;">
-        <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">${post.date} • ${(post.categoryLabel || post.category).toUpperCase()}</div>
-        <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">
-          <a href="artigo?id=${post.id}" style="color: var(--color-text-main); text-decoration: none;">${post.title}</a>
-        </h2>
-        <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">${post.summary}</p>
-        <a href="artigo?id=${post.id}" style="display: inline-block; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; text-decoration: none;">Ler artigo completo →</a>
-      </div>
-    </article>
-  `).join('');
+  blogGrid.innerHTML = posts.map(post => {
+    const postLink = `artigo?slug=${post.slug || post.id}`;
+    const displayDate = post.dateFormatted || post.date;
+
+    return `
+      <article class="feature-card blog-post-card" data-category="${post.category}" style="padding: 0; overflow: hidden; background: #fff;">
+        <a href="${postLink}">
+          <img src="${post.image}" alt="${post.title}" style="width: 100%; height: 210px; object-fit: cover;">
+        </a>
+        <div style="padding: 28px;">
+          <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold); font-weight: 700;">${displayDate} • ${(post.categoryLabel || post.category).toUpperCase()}</div>
+          <h2 style="font-family: var(--font-heading); font-size: 21px; font-weight: 600; margin-top: 10px; color: var(--color-text-main);">
+            <a href="${postLink}" style="color: var(--color-text-main); text-decoration: none;">${post.title}</a>
+          </h2>
+          <p style="font-size: 14.5px; color: var(--color-text-body); margin-top: 10px; line-height: 1.6;">${post.summary}</p>
+          <a href="${postLink}" style="display: inline-block; font-size: 14px; font-weight: 700; color: var(--color-primary); margin-top: 20px; text-decoration: none;">Ler artigo completo →</a>
+        </div>
+      </article>
+    `;
+  }).join('');
 }
 
 /* ==========================================================================

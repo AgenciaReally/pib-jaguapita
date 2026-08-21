@@ -532,27 +532,33 @@ body.admin-body {
   gap: 8px;
 }
 
-.cover-upload-area {
-  border: 2px dashed var(--admin-border);
+.cover-preview-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
   border-radius: 8px;
-  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid var(--admin-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.cover-upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--admin-primary);
+  border-radius: 8px;
+  padding: 18px 14px;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: #F8FAFC;
-}
-
-.cover-upload-area:hover {
-  border-color: var(--admin-primary);
   background: rgba(30, 62, 114, 0.03);
 }
 
-.cover-preview-img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 10px;
+.cover-upload-area:hover {
+  border-color: var(--admin-primary-hover);
+  background: rgba(30, 62, 114, 0.08);
 }
 
 /* Buttons */

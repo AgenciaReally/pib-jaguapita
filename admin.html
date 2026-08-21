@@ -308,6 +308,7 @@
                 <tr>
                   <th style="width: 70px;">Capa</th>
                   <th>Título do Artigo</th>
+                  <th>Slug (URL)</th>
                   <th>Categoria</th>
                   <th>Data</th>
                   <th style="text-align: right;">Ações</th>
@@ -353,6 +354,7 @@
       <!-- Left Column: Content Editor (~78%) -->
       <main class="editor-main-col">
         <input type="hidden" id="editor-article-id">
+        <input type="hidden" id="editor-image-url" value="./assets/blog_oracao.jpg">
         
         <!-- Large Title Input -->
         <input type="text" id="editor-title" class="editor-title-input" placeholder="Digite o Título do Artigo aqui..." required>
@@ -375,7 +377,7 @@
       <!-- Right Column: Settings Sidebar (~22%) -->
       <aside class="editor-sidebar-col">
         
-        <!-- Cover Image Settings Box -->
+        <!-- Cover Image Settings Box (UPLOAD DIRETO) -->
         <div class="sidebar-box-card">
           <div class="sidebar-box-title">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
@@ -385,15 +387,24 @@
           <img id="cover-preview-img" src="./assets/blog_oracao.jpg" alt="Prévia da Capa" class="cover-preview-img">
           
           <label class="cover-upload-area" for="cover-file-input">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--admin-primary); margin-bottom: 4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-            <div style="font-size: 13px; font-weight: 700; color: var(--admin-primary);">Fazer Upload da Imagem</div>
-            <div style="font-size: 11px; color: var(--admin-muted); margin-top: 2px;">PNG, JPG ou WEBP do computador</div>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--admin-primary); margin-bottom: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <div style="font-size: 13.5px; font-weight: 700; color: var(--admin-primary);">Fazer Upload da Imagem</div>
+            <div style="font-size: 11.5px; color: var(--admin-muted); margin-top: 3px;">Clique para selecionar do computador</div>
           </label>
           <input type="file" id="cover-file-input" accept="image/*" style="display: none;">
+        </div>
 
-          <div style="margin-top: 14px;">
-            <label style="font-size: 12px; font-weight: 600; color: var(--admin-muted); display: block; margin-bottom: 4px;">Ou Cole o Link / URL da Imagem:</label>
-            <input type="text" id="editor-image-url" class="form-control" style="font-size: 12.5px;" placeholder="./assets/blog_oracao.jpg">
+        <!-- Slug (URL Amigável) Box -->
+        <div class="sidebar-box-card">
+          <div class="sidebar-box-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            <span>Endereço Slug (URL)</span>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="text" id="editor-slug" class="form-control" placeholder="ex: como-crescer-na-vida-de-oracao">
+            <div style="font-size: 11.5px; color: var(--admin-muted); margin-top: 6px;">
+              Link: <span id="slug-preview-text" style="color: var(--admin-primary); font-weight: 600;">artigo?slug=...</span>
+            </div>
           </div>
         </div>
 
@@ -406,7 +417,7 @@
           <textarea id="editor-summary" class="form-control" rows="3" placeholder="Escreva uma breve síntese para aparecer nos cartões e buscas..." required></textarea>
         </div>
 
-        <!-- Metadata Box -->
+        <!-- Metadata Box with Date Picker -->
         <div class="sidebar-box-card">
           <div class="sidebar-box-title">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
@@ -425,7 +436,7 @@
 
           <div class="form-group" style="margin-bottom: 0;">
             <label style="font-size: 12.5px;">Data de Publicação</label>
-            <input type="text" id="editor-date" class="form-control" placeholder="Ex: 20 AGO 2026">
+            <input type="date" id="editor-date" class="form-control" style="cursor: pointer;">
           </div>
         </div>
 
@@ -440,6 +451,8 @@
   <!-- Scripts -->
   <script src="./js/store.js"></script>
   <script>
+    let isSlugUserEdited = false;
+
     document.addEventListener('DOMContentLoaded', () => {
       // 1. Auth Check
       if (PIBStore.isAuthenticated()) {
@@ -480,7 +493,7 @@
       // 5. Populate Forms from Store
       loadSettingsToForms();
 
-      // 6. Save Contact Settings Form
+      // 6. Save Forms
       document.getElementById('form-settings-contact').addEventListener('submit', (e) => {
         e.preventDefault();
         PIBStore.saveSettings({
@@ -492,7 +505,6 @@
         showToast('✓ Informações de contato salvas e integradas ao site!');
       });
 
-      // 7. Save Social Settings Form
       document.getElementById('form-settings-social').addEventListener('submit', (e) => {
         e.preventDefault();
         PIBStore.saveSettings({
@@ -500,10 +512,9 @@
           facebookUrl: document.getElementById('setting-facebook').value,
           youtubeUrl: document.getElementById('setting-youtube').value
         });
-        showToast('✓ Links de redes sociais salvos e integrados ao rodapé!');
+        showToast('✓ Links de redes sociais salvos e integrados!');
       });
 
-      // 8. Save Giving Settings Form
       document.getElementById('form-settings-giving').addEventListener('submit', (e) => {
         e.preventDefault();
         PIBStore.saveSettings({
@@ -513,10 +524,9 @@
           bankAccount: document.getElementById('setting-bankAccount').value,
           bankFavored: document.getElementById('setting-bankFavored').value
         });
-        showToast('✓ Chave PIX e dados bancários atualizados com sucesso!');
+        showToast('✓ Dados bancários salvos com sucesso!');
       });
 
-      // 9. Save Map Settings Form
       document.getElementById('form-settings-map').addEventListener('submit', (e) => {
         e.preventDefault();
         PIBStore.saveSettings({
@@ -526,7 +536,7 @@
         showToast('✓ Configurações do Google Maps salvas com sucesso!');
       });
 
-      // 10. Editor Cover Image File Upload Handler (FileReader base64 DataURL)
+      // 7. Cover Image File Upload Handler
       const fileInput = document.getElementById('cover-file-input');
       fileInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
@@ -542,17 +552,32 @@
         }
       });
 
-      document.getElementById('editor-image-url').addEventListener('input', (e) => {
-        const val = e.target.value.trim();
-        if (val) {
-          document.getElementById('cover-preview-img').src = val;
+      // 8. Auto-Slugification from Title
+      const titleInput = document.getElementById('editor-title');
+      const slugInput = document.getElementById('editor-slug');
+
+      titleInput.addEventListener('input', () => {
+        if (!isSlugUserEdited) {
+          const generated = slugify(titleInput.value);
+          slugInput.value = generated;
+          updateSlugPreview(generated);
         }
       });
 
-      // 11. Save & Publish Article Handler
+      slugInput.addEventListener('input', () => {
+        isSlugUserEdited = true;
+        updateSlugPreview(slugInput.value);
+      });
+
+      // 9. Save & Publish Article Handler
       document.getElementById('btn-save-article').onclick = saveArticle;
       document.getElementById('btn-editor-back').onclick = closeFullscreenEditor;
     });
+
+    function updateSlugPreview(val) {
+      const clean = slugify(val);
+      document.getElementById('slug-preview-text').textContent = clean ? `artigo?slug=${clean}` : 'artigo?slug=...';
+    }
 
     /* Rich Text Formatting Exec commands */
     function execCmd(command, value = null) {
@@ -584,6 +609,7 @@
     function openFullscreenEditor(id = null) {
       document.getElementById('dashboard-view').style.display = 'none';
       document.getElementById('editor-fullscreen-view').style.display = 'flex';
+      isSlugUserEdited = false;
 
       if (id) {
         const post = PIBStore.getBlogPostById(id);
@@ -594,7 +620,18 @@
           document.getElementById('editor-content-body').innerHTML = post.content;
           document.getElementById('editor-summary').value = post.summary;
           document.getElementById('editor-category').value = post.category;
-          document.getElementById('editor-date').value = post.date;
+          
+          // Date formatting for input type="date" (YYYY-MM-DD)
+          let dateVal = post.date || new Date().toISOString().split('T')[0];
+          if (!dateVal.includes('-')) {
+            dateVal = new Date().toISOString().split('T')[0];
+          }
+          document.getElementById('editor-date').value = dateVal;
+
+          const slugVal = post.slug || slugify(post.title);
+          document.getElementById('editor-slug').value = slugVal;
+          updateSlugPreview(slugVal);
+
           document.getElementById('editor-image-url').value = post.image;
           document.getElementById('cover-preview-img').src = post.image;
         }
@@ -605,7 +642,13 @@
         document.getElementById('editor-content-body').innerHTML = '';
         document.getElementById('editor-summary').value = '';
         document.getElementById('editor-category').value = 'devocional';
-        document.getElementById('editor-date').value = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+        
+        const todayIso = new Date().toISOString().split('T')[0];
+        document.getElementById('editor-date').value = todayIso;
+        
+        document.getElementById('editor-slug').value = '';
+        updateSlugPreview('');
+
         document.getElementById('editor-image-url').value = './assets/blog_oracao.jpg';
         document.getElementById('cover-preview-img').src = './assets/blog_oracao.jpg';
       }
@@ -622,6 +665,8 @@
       const title = document.getElementById('editor-title').value.trim();
       const content = document.getElementById('editor-content-body').innerHTML.trim();
       const summary = document.getElementById('editor-summary').value.trim();
+      const rawSlug = document.getElementById('editor-slug').value.trim();
+      const rawDate = document.getElementById('editor-date').value;
 
       if (!title) {
         alert('Por favor, informe o título do artigo!');
@@ -632,11 +677,19 @@
         return;
       }
 
+      // Format date for display (e.g. 20 AGO 2026)
+      const dateObj = rawDate ? new Date(rawDate + 'T12:00:00') : new Date();
+      const dateFormatted = dateObj.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+
+      const finalSlug = rawSlug ? slugify(rawSlug) : slugify(title);
       const id = document.getElementById('editor-article-id').value;
+
       const postData = {
         title: title,
+        slug: finalSlug,
         category: document.getElementById('editor-category').value,
-        date: document.getElementById('editor-date').value || new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase(),
+        date: rawDate || new Date().toISOString().split('T')[0],
+        dateFormatted: dateFormatted,
         image: document.getElementById('editor-image-url').value || './assets/blog_oracao.jpg',
         summary: summary,
         content: content || `<p>${summary}</p>`
@@ -714,8 +767,9 @@
             <img src="${post.image}" alt="${post.title}" style="width: 48px; height: 38px; object-fit: cover; border-radius: 4px;">
           </td>
           <td style="font-weight: 600; color: var(--admin-text);">${post.title}</td>
+          <td style="color: var(--admin-primary); font-size: 13px; font-family: monospace;">artigo?slug=${post.slug || post.id}</td>
           <td><span class="badge-cat">${post.categoryLabel || post.category}</span></td>
-          <td style="color: var(--admin-muted); font-size: 13px;">${post.date}</td>
+          <td style="color: var(--admin-muted); font-size: 13px;">${post.dateFormatted || post.date}</td>
           <td style="text-align: right;">
             <div class="table-actions" style="justify-content: flex-end;">
               <button class="btn-icon-action" onclick="openFullscreenEditor('${post.id}')" title="Editar Artigo no Editor Avançado">
